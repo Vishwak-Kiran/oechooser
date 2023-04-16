@@ -1,6 +1,6 @@
 import React from "react";
 import NavBarItem from "./navbar-item";
-
+import "./navbar.css";
 import Logo from "./icons/logo.jsx";
 import Cat from "./icons/cat.jsx";
 import Alien from "./icons/alien.jsx";

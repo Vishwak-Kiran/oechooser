@@ -18,40 +18,47 @@ function App() {
 
   return (
     <div className="App">
-      {authIsReady && (
-        <BrowserRouter>
-          {user && <Navbar />}
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Dashboard />}></Route>
-              <Route
-                path="/login"
-                element={
-                  !user ? <Login /> : <Navigate to="/profile"></Navigate>
-                }
-              ></Route>
-              <Route path="/signup" element={!user && <Signup />}></Route>
-              <Route path="/particles" element={!user && <Particles />}></Route>
+      <div className="designCard">
+        <div className="designCard-content">
+          {authIsReady && (
+            <BrowserRouter>
+              {user && <Navbar />}
+              <div className="container">
+                <Routes>
+                  <Route path="/" element={<Dashboard />}></Route>
+                  <Route
+                    path="/login"
+                    element={
+                      !user ? <Login /> : <Navigate to="/profile"></Navigate>
+                    }
+                  ></Route>
+                  <Route path="/signup" element={!user && <Signup />}></Route>
+                  <Route
+                    path="/particles"
+                    element={!user && <Particles />}
+                  ></Route>
 
-              <Route
-                path="/request"
-                element={user ? <Create /> : <Login />}
-              ></Route>
+                  <Route
+                    path="/request"
+                    element={user ? <Create /> : <Login />}
+                  ></Route>
 
-              <Route
-                path="/pending"
-                element={user ? <Pending /> : <Login />}
-              ></Route>
-              <Route
-                path="/dashboard"
-                element={user ? <Dashboard /> : <Login />}
-              ></Route>
-              {/* <Route path="/success" element={<Success />}></Route> */}
-              <Route path="/electives/:id" element={<Project />}></Route>
-            </Routes>
-          </div>
-        </BrowserRouter>
-      )}
+                  <Route
+                    path="/pending"
+                    element={user ? <Pending /> : <Login />}
+                  ></Route>
+                  <Route
+                    path="/dashboard"
+                    element={user ? <Dashboard /> : <Login />}
+                  ></Route>
+                  {/* <Route path="/success" element={<Success />}></Route> */}
+                  <Route path="/electives/:id" element={<Project />}></Route>
+                </Routes>
+              </div>
+            </BrowserRouter>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

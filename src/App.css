@@ -1,6 +1,6 @@
 :root {
   font-size: 16px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   --text-primary: #b6b6b6;
   --text-secondary: #ececec;
   --bg-primary: #23232e;
@@ -9,10 +9,102 @@
 }
 
 body {
-  color: black;
-  background-color: white;
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(10, 10, 10);
+  display: grid;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  place-items: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+:root {
+  --border: rgb(3, 169, 244);
+
+  --g1: rgb(98, 0, 234);
+  --g2: rgba(236, 64, 121, 0.819);
+  --g3: rgba(253, 216, 53, 0.834);
+}
+
+.designCard {
+  aspect-ratio: 1 / 1.6;
+  cursor: pointer;
+  position: relative;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+}
+
+.designCard:hover:before {
+  background-position: 100% 100%;
+  transform: scale(1.08, 1.03);
+}
+
+.designCard:hover > .designCard-content {
+  background-position: -10% 0%;
+}
+
+.designCard:hover > .designCard-icon {
+  color: white;
+}
+
+.designCard:hover
+  > .designCard-content
+  > .designCard-subtitle
+  > .designCard-subtitle-word {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: opacity 0ms, transform 500ms cubic-bezier(0.9, 0.06, 0.15, 0.9);
+}
+
+.designCard:before {
+  background: linear-gradient(
+    130deg,
+    transparent 0% 23%,
+    var(--g1) 66%,
+    var(--g2) 83.5%,
+    var(--g3) 100%
+  );
+  background-position: 0% 0%;
+  background-size: 300% 300%;
+  content: "";
+  height: 100%;
+  left: 0px;
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  transition: background-position 350ms ease, transform 350ms ease;
+  width: 100%;
+  z-index: 1;
+}
+
+.designCard-content {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.2) 8%,
+    transparent 8%
+  );
+  background-position: 0% 0%;
+  background-size: 5vmin 5vmin;
+  height: calc(100% - 10vmin);
+  padding: 5vmin;
+  position: relative;
+  transition: background-position 350ms ease;
+  width: calc(100% - 10vmin);
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body::-webkit-scrollbar {

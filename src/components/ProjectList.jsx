@@ -43,13 +43,13 @@ export default function ProjectList({ projects }) {
                   <div class="card-info-title">
                     <h3>Slots {project && project.slots}</h3>
                     <h4>Course details: {project.details}</h4>
-                    {/*<div className="assigned-to">
+                    <div className="assigned-to">
                       {project.assignedUsersList.map((user) => (
                         <li key={user.uid}>
                           <h> {user && user.Name}</h>
                         </li>
                       ))}
-                    </div>*/}
+                    </div>
                   </div>
                 </div>
               </div>

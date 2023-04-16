@@ -13,7 +13,7 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(10, 10, 10);
+  background-color: rgb(20, 20, 20);
   display: grid;
   height: 100vh;
   margin: 0px;
@@ -46,7 +46,7 @@ html {
   z-index: 0;
 }
 
-.designCard:hover:before {
+/* .designCard:hover:before {
   background-position: 100% 100%;
   transform: scale(1.08, 1.03);
 }
@@ -87,15 +87,15 @@ html {
   transition: background-position 350ms ease, transform 350ms ease;
   width: 100%;
   z-index: 1;
-}
+} */
 
 .designCard-content {
   background-image: radial-gradient(
-    rgba(255, 255, 255, 0.2) 8%,
+    rgba(255, 255, 255, 0.2) 5%,
     transparent 8%
   );
   background-position: 0% 0%;
-  background-size: 3vmin 3vmin;
+  background-size: 2vmin 2vmin;
   height: calc(100% - 10vmin);
   padding: 5vmin;
   position: relative;

@@ -18,7 +18,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;  
-  max-width: 916px;
+  margin-left: 6%;
+  max-width: 1316px;
   width: calc(100% - 20px);
 }
 

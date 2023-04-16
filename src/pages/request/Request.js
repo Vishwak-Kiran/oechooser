@@ -13,7 +13,7 @@ export default function Request() {
     ["createdAt", "desc"]
   );
   return (
-    <div className="card" style={{ background: "red" }}>
+    <div className={styles.bg}>
       <div className="card-content">
         <div className={styles.container}>
           {/* <div className={styles.content}>

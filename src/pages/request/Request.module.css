@@ -53,6 +53,9 @@
   .sidebar aside li {
     margin: 10px;
   }
+  .bg {
+    background-color: black !important;
+  }
   
   /* transactions */
   .transactions li {

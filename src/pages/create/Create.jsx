@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import Select from "react-select";
 
-import "./Create.css";
+import styles from "./Create.module.css";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 
@@ -100,7 +100,8 @@ export default function Create() {
   //   }, [response.success]);
 
   return (
-    <div className="create-form">
+    <div className={styles.form}>
+    <div className={styles.bg}>
       <h2 className="page-title">Add a New Open Elective</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -148,7 +149,7 @@ export default function Create() {
         <label>
           <span>Details:</span>
           <textarea
-            className="textarea"
+            className={styles.textarea}
             required
             onChange={(e) => setDetails(e.target.value)}
             value={details}
@@ -168,6 +169,7 @@ export default function Create() {
 
         {formError && <p className="error">{formError}</p>}
       </form>
+    </div>
     </div>
   );
 }

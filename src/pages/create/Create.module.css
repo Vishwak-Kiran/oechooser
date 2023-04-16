@@ -1,0 +1,18 @@
+
+.form {
+    max-width: 87vh;
+    height: 90vh !important;
+    margin-left:12%;
+   
+    
+  }
+  .bg{
+    background-color: grey !important;
+    height: 100vh;
+  }
+
+  .textarea{
+    width: 300px;
+    max-height: 150px;
+  
+  }

@@ -31,9 +31,9 @@ html {
 :root {
   --border: rgb(3, 169, 244);
 
-  --g1: rgb(98, 0, 234);
-  --g2: rgba(236, 64, 121, 0.819);
-  --g3: rgba(253, 216, 53, 0.834);
+  --g1: rgba(98, 0, 234, 0.526);
+  --g2: rgba(236, 64, 121, 0.393);
+  --g3: rgba(253, 216, 53, 0.416);
 }
 
 .designCard {
@@ -71,7 +71,7 @@ html {
 .designCard:before {
   background: linear-gradient(
     130deg,
-    transparent 0% 23%,
+    transparent 0% 33%,
     var(--g1) 66%,
     var(--g2) 83.5%,
     var(--g3) 100%
@@ -95,7 +95,7 @@ html {
     transparent 8%
   );
   background-position: 0% 0%;
-  background-size: 5vmin 5vmin;
+  background-size: 3vmin 3vmin;
   height: calc(100% - 10vmin);
   padding: 5vmin;
   position: relative;

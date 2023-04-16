@@ -5,11 +5,11 @@ const Cat = () => {
       aria-hidden="true"
       focusable="false"
       data-prefix="fad"
-      data-icon="cat"
+      data-icon="controls"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      className="svg-inline--fa fa-cat fa-w-16 fa-9x"
+      className="svg-inline--fa fa-controls fa-w-16 fa-9x"
     >
       <g className="fa-group">
         <path

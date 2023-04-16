@@ -18,10 +18,10 @@ const NavBar = () => {
           </a>
         </li>
 
-        <NavBarItem link={"/cat"} svg={<Cat />} name={"Cats"} />
-        <NavBarItem link={"/alien"} svg={<Alien />} name={"Aliens"} />
-        <NavBarItem link={"/space"} svg={<Space />} name={"Space"} />
-        <NavBarItem link={"/shuttle"} svg={<Shuttle />} name={"Shuttle"} />
+        <NavBarItem link={"/"} svg={<Cat />} name={"Dashboard"} />
+        <NavBarItem link={"/request"} svg={<Alien />} name={"Admin Controls"} />
+        <NavBarItem link={"/pending"} svg={<Space />} name={"Choose OE"} />
+        <NavBarItem link={"/login"} svg={<Shuttle />} name={"Logout"} />
 
         <li className="nav-item" id="themeButton">
           <a href="#" className="nav-link">
@@ -35,7 +35,7 @@ const NavBar = () => {
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
-            //   className="svg-inline--fa fa-moon-stars fa-w-16 fa-7x"
+              //   className="svg-inline--fa fa-moon-stars fa-w-16 fa-7x"
             >
               <g className="fa-group">
                 <path

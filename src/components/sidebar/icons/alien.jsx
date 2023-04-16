@@ -9,7 +9,8 @@ const Alien = () => {
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 576 512"
-      className="svg-inline--fa fa-alien-monster fa-w-18 fa-9x"
+      className="svg-inline--fa  fa-tachometer
+      fa-w-18 fa-9x"
     >
       <g className="fa-group">
         <path

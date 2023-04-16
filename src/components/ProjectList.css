@@ -15,7 +15,6 @@ body {
 }
 
 #cards {
-  margin-left: 6%;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;  

@@ -1,24 +1,35 @@
 import "./ProjectList.css";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "./Avatar";
 
-export default function ProjectList({ projects }) {
-  document.getElementById("cards").onmousemove = (e) => {
-    for (const card of document.getElementsByClassName("card")) {
-      const rect = card.getBoundingClientRect(),
-        x = e.clientX - rect.left,
-        y = e.clientY - rect.top;
 
-      card.style.setProperty("--mouse-x", `${x}px`);
-      card.style.setProperty("--mouse-y", `${y}px`);
-    }
-  };
+export default function ProjectList({ projects }) {
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      for (const card of document.getElementsByClassName("card")) {
+        const rect = card.getBoundingClientRect(),
+          x = e.clientX - rect.left,
+          y = e.clientY - rect.top;
+
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
+      }
+    };
+
+    const cards = document.getElementById("cards");
+    cards.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      cards.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   return (
     <div id="cards">
       {projects.length === 0 && <p>No request yet</p>}
+      
       {projects.map((project) => (
         <Link to={`/electives/${project.id}`} key={project.id}>
           <div class="card">

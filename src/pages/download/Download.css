@@ -1,0 +1,112 @@
+.student-table {
+  font-family: Arial, sans-serif;
+  width: 90%;
+  margin: 1rem;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  background-color: #4caf50;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.student-table th,
+.student-table td {
+  text-align: left;
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
+
+.student-table th {
+  background-color: #fff;
+  color: #4caf50;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.student-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.student-table tr:hover {
+  background-color: #e6f7e0;
+}
+
+.student-table td:first-child {
+  border-left: 1px solid #ddd;
+}
+
+.student-table td:last-child {
+  border-right: 1px solid #ddd;
+}
+
+.student-table th:first-child {
+  border-left: 1px solid #ddd;
+}
+
+.student-table th:last-child {
+  border-right: 1px solid #ddd;
+}
+
+.student-table ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 80%;
+}
+
+.student-table li {
+  padding: 1rem;
+  margin: 0.5rem;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  font-size: 1.5rem;
+}
+
+/* Animation */
+.student-table tr {
+  transition: background-color 0.2s ease-out;
+}
+
+.download-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+}
+
+.download-header {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #4caf50;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.download-btn {
+  width: 15rem;
+  height: 4rem;
+  margin-bottom: 2rem;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.download-table {
+  width: 80%;
+  font-size: 2rem;
+  margin-top: 2rem;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.download-table td {
+  border: 1px solid black;
+  padding: 1rem;
+}

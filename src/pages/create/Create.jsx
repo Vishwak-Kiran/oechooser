@@ -101,75 +101,70 @@ export default function Create() {
 
   return (
     <div className={styles.form}>
-    <div className={styles.bg}>
-      <h2 className="page-title">Add a New Open Elective</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>Number of slots</span>
-          <input
-            required
-            type="number"
-            onChange={(e) => setSlots(e.target.value)}
-            value={slots}
-          />
-        </label>
+      <div className={styles.bg}>
+        <h2 className={styles.title}>Add a New Open Elective</h2>
+        <hr></hr>
+        <form onSubmit={handleSubmit}>
+          <ul>
+            <li>
+              <label>
+                <span>Number of slots:</span>
+                <input
+                  
+                  required
+                  type="number"
+                  onChange={(e) => setSlots(e.target.value)}
+                  value={slots}
+                />
+              </label>
+            </li>
+            <li>
+              <label>
+                <span>Elective Name:</span>
+                <input
+                  type="text"
+                  required
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                  value={name}
+                />
+              </label>
+            </li>
+            <li>
+          <label>
+            <span>Details:</span>
+            <textarea
+              className={styles.textarea}
+              required
+              onChange={(e) => setDetails(e.target.value)}
+              value={details}
+            ></textarea>
+          </label>
 
-        {/* <label>
-          <span>Expires:</span>
-          <input
-            required
-            type="date"
-            onChange={(e) => setDueDate(e.target.value)}
-            value={dueDate}
-          />
-        </label> */}
+            </li>
+            <li>
 
-        {/* <label>
-          <span>Tenure:</span>
-          <input
-            type="number"
-            required
-            onChange={(e) => {
-              setTenure(e.target.value);
-            }}
-            value={tenure}
-          />
-        </label> */}
-        <label>
-          <span>Elective Name :</span>
-          <input
-            type="text"
-            required
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            value={name}
-          />
-        </label>
-        <label>
-          <span>Details:</span>
-          <textarea
-            className={styles.textarea}
-            required
-            onChange={(e) => setDetails(e.target.value)}
-            value={details}
-          ></textarea>
-        </label>
+          <label>
+            <span>Departments it belong to:</span>
+            <Select
+              onChange={(option) => setAssignedUsers(option)}
+              options={users}
+              isMulti
+              className={styles.selcet}
+            />
+          </label>
+            </li>
+          </ul>
 
-        <label>
-          <span>Departments it belong to:</span>
-          <Select
-            onChange={(option) => setAssignedUsers(option)}
-            options={users}
-            isMulti
-          />
-        </label>
 
-        <button className="btn">Add Elective</button>
 
-        {formError && <p className="error">{formError}</p>}
-      </form>
-    </div>
+
+          <button className="btn">Add Elective</button>
+
+          {formError && <p className="error">{formError}</p>}
+        </form>
+      </div>
     </div>
   );
 }

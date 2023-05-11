@@ -50,8 +50,11 @@ export default function Download() {
         field &&
           documents &&
           documents.map((document) => (
-          <p>{document.students[1]}</p>)
-          )
+            <ul>
+              <p>{document.students[1]}</p>
+              <p>{document.students[2]}</p>
+            </ul>
+          ))
         // <h1>the students in {documents[0].students[1]}</h1>
       }
       {/* {console.log(field, documents)}

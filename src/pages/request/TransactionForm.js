@@ -79,13 +79,11 @@ export default function TransactionForm({ uid }) {
             value={interest}
           />
         </label>
-        <button>Submit</button>
+        <button className="btn">Submit</button>
       </form>
     </>
   );
 }
-
-
 
 //   const handleSubmit = (e) => {
 //     e.preventDefault();

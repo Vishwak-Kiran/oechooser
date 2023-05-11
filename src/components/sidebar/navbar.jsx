@@ -6,8 +6,14 @@ import Cat from "./icons/cat.jsx";
 import Alien from "./icons/alien.jsx";
 import Space from "./icons/space.jsx";
 import Shuttle from "./icons/shuttle.jsx";
+import { useLogout } from "../../hooks/useLogout";
+import { Navigate } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const NavBar = () => {
+  const { logout, isPending } = useLogout();
+  const { user } = useAuthContext();
+
   return (
     <nav className="navbar">
       <ul className="navbar-nav">
@@ -21,9 +27,9 @@ const NavBar = () => {
         <NavBarItem link={"/"} svg={<Cat />} name={"Dashboard"} />
         <NavBarItem link={"/request"} svg={<Alien />} name={"Admin Controls"} />
         <NavBarItem link={"/pending"} svg={<Space />} name={"Choose OE"} />
-        <NavBarItem link={"/login"} svg={<Shuttle />} name={"Logout"} />
-
-        
+        <li onClick={logout} element={<Navigate to="/" replace />}>
+          <NavBarItem link={"/login"} svg={<Shuttle />} name={"Logout"} />
+        </li>
       </ul>
     </nav>
   );

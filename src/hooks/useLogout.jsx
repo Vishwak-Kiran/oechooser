@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { auth,fireStore } from "../firebaseDatabase/config";
+import { auth, fireStore } from "../firebaseDatabase/config";
 
 import { useAuthContext } from "./useAuthContext";
 
@@ -15,7 +15,7 @@ export const useLogout = () => {
 
     try {
       const { uid } = user;
-      await fireStore.collection('users').doc(uid).update({online: false})
+      await fireStore.collection("users").doc(uid).update({ online: false });
 
       await auth.signOut();
 

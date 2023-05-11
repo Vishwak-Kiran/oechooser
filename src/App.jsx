@@ -13,6 +13,7 @@ import Create from "./pages/create/Create";
 // import Form from "./pages/profile/Form";
 import Particles from "./components/ParticlesBackground";
 import ParticlesBackground from "./components/ParticlesBackground";
+import Download from "./pages/download/Download";
 function App() {
   const { authIsReady, user } = useAuthContext();
 
@@ -50,6 +51,10 @@ function App() {
                   <Route
                     path="/dashboard"
                     element={user ? <Dashboard /> : <Login />}
+                  ></Route>
+                  <Route
+                    path="/download"
+                    element={user ? <Download /> : <Login />}
                   ></Route>
                   {/* <Route path="/success" element={<Success />}></Route> */}
                   <Route path="/electives/:id" element={<Project />}></Route>

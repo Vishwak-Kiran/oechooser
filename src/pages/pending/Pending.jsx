@@ -10,8 +10,10 @@ export default function Pending() {
   const { user } = useAuthContext();
   const { documents, error } = useCollection("electives");
   const [filter, setFilter] = useState("all");
+
   {
     console.log("works");
+    // console.log(documents);
   }
   const changeFilter = (newFilter) => {
     setFilter(newFilter);
@@ -22,10 +24,14 @@ export default function Pending() {
         switch (filter) {
           case "all request":
             return true;
-          case "mine":
+          case "IT":
             let assignedToMe = false;
+            // if (document.uid === "IT") {
+            //   assignedToMe = true;
+            // }
             document.assignedUsersList.forEach((u) => {
-              if (u.id === user.uid) {
+              if (u.uid === "csc") {
+                console.log(u);
                 assignedToMe = true;
               }
             });

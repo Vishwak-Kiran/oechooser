@@ -33,7 +33,7 @@ function App() {
                       !user ? <Login /> : <Navigate to="/profile"></Navigate>
                     }
                   ></Route>
-                  <Route path="/signup" element={!user && <Signup />}></Route>
+                  <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/profile"></Navigate>}></Route>
                   <Route
                     path="/particles"
                     element={!user && <Particles />}
@@ -41,7 +41,7 @@ function App() {
 
                   <Route
                     path="/request"
-                    element={user ? <Create /> : <Login />}
+                    element={user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? <Create /> : <Login />}
                   ></Route>
 
                   <Route
@@ -54,7 +54,7 @@ function App() {
                   ></Route>
                   <Route
                     path="/download"
-                    element={user ? <Download /> : <Login />}
+                    element={user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? <Download /> : <Login />}
                   ></Route>
                   {/* <Route path="/success" element={<Success />}></Route> */}
                   <Route path="/electives/:id" element={<Project />}></Route>

@@ -7,9 +7,9 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Download() {
   const { user } = useAuthContext();
-  const [OE, setOE] = useState("Machine Learning");
   const [field, setfield] = useState(false);
-  const { documents, error } = useCollection("Web Design and Management");
+  const { documents, error } = useCollection("Water Management");
+  const [OE, setOE] = useState("Machine Learning");
   const [filter, setFilter] = useState({});
   const componentRef = useRef();
 

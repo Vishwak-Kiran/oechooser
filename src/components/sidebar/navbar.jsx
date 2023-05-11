@@ -25,11 +25,29 @@ const NavBar = () => {
         </li>
 
         <NavBarItem link={"/"} svg={<Cat />} name={"Dashboard"} />
-        <NavBarItem link={"/request"} svg={<Alien />} name={"Admin Controls"} />
+        {user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? <NavBarItem link={"/request"} svg={<Alien />} name={"Admin Controls"} />: <></>}
         <NavBarItem link={"/pending"} svg={<Space />} name={"Choose OE"} />
-        <li onClick={logout} element={<Navigate to="/" replace />}>
+        <li className="nav-item">
+              {!isPending && (
+                <a 
+                  className="nav-link"
+                  onClick={logout}
+                  element={<Navigate to="/" replace />}
+                >
+                  <Shuttle/>
+                  <span className="link-text">Logout</span>
+                </a>
+              )}
+              {isPending && (
+                <a className="nav-link" disabled>
+                  <Shuttle/>
+                  <span className="link-text">Logout</span>
+                </a>
+              )}
+            </li>
+        {/* <li onClick={logout} element={<Navigate to="/" replace />}>
           <NavBarItem link={"/login"} svg={<Shuttle />} name={"Logout"} />
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

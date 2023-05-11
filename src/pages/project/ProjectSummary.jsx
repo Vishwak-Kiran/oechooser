@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 // import Avatar from "../../components/navbar/Avatar";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
-
+import { useLogout } from "../../hooks/useLogout";
+import { Navigate } from "react-router-dom";
 export default function ProjectSummary({ project }) {
   const { deleteDocument } = useFirestore("projects");
   const { addDocument, response } = useFirestore(project.name);
-
+  const { logout, isPending } = useLogout();
   const { user } = useAuthContext();
   let navigate = useNavigate();
   // const handleClick = (e) => {
@@ -24,6 +25,7 @@ export default function ProjectSummary({ project }) {
       students: [user.uid, user.email, user.displayName],
     });
     navigate("/");
+    logout();
   };
   // const handleReject = () => {
   //   navigate("/pending");

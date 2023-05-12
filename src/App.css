@@ -92,15 +92,15 @@ html {
 .designCard-content {
   background-image: radial-gradient(
     rgba(255, 255, 255, 0.2) 5%,
-    transparent 8%
+    #d6d0db7d 8%
   );
   background-position: 0% 0%;
   background-size: 2vmin 2vmin;
-  height: calc(100% - 10vmin);
+  height: calc(100%);
   padding: 5vmin;
   position: relative;
   transition: background-position 350ms ease;
-  width: calc(100% - 10vmin);
+  width: calc(100%);
   z-index: 2;
   margin: 0;
   box-sizing: border-box;
@@ -247,6 +247,7 @@ body::-webkit-scrollbar-thumb {
   .navbar {
     top: 0;
     width: 6rem;
+    left: 0;
     height: 100vh; /* 100% of the view port no matter the change */
   }
 

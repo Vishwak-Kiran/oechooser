@@ -25,7 +25,7 @@ const NavBar = () => {
           </a>
         </li>
 
-        <NavBarItem link={"/"} svg={<Cat />} name={"Dashboard"} />
+        {/* <NavBarItem link={"/"} svg={<Cat />} name={"Dashboard"} /> */}
         {user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? (
           <NavBarItem
             link={"/request"}

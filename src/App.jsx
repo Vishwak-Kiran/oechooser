@@ -26,14 +26,19 @@ function App() {
               {user && <Navbar />}
               <div className="container">
                 <Routes>
-                  <Route path="/" element={<Dashboard />}></Route>
+                  <Route path="/" element={<Pending />}></Route>
                   <Route
                     path="/login"
                     element={
-                      !user ? <Login /> : <Navigate to="/profile"></Navigate>
+                      !user ? <Login /> : <Navigate to="/pending"></Navigate>
                     }
                   ></Route>
-                  <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/profile"></Navigate>}></Route>
+                  <Route
+                    path="/signup"
+                    element={
+                      !user ? <Signup /> : <Navigate to="/pending"></Navigate>
+                    }
+                  ></Route>
                   <Route
                     path="/particles"
                     element={!user && <Particles />}
@@ -41,20 +46,32 @@ function App() {
 
                   <Route
                     path="/request"
-                    element={user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? <Create /> : <Login />}
+                    element={
+                      user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? (
+                        <Create />
+                      ) : (
+                        <Login />
+                      )
+                    }
                   ></Route>
 
                   <Route
                     path="/pending"
                     element={user ? <Pending /> : <Login />}
                   ></Route>
-                  <Route
+                  {/* <Route
                     path="/dashboard"
                     element={user ? <Dashboard /> : <Login />}
-                  ></Route>
+                  ></Route> */}
                   <Route
                     path="/download"
-                    element={user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? <Download /> : <Login />}
+                    element={
+                      user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? (
+                        <Download />
+                      ) : (
+                        <Login />
+                      )
+                    }
                   ></Route>
                   {/* <Route path="/success" element={<Success />}></Route> */}
                   <Route path="/electives/:id" element={<Project />}></Route>

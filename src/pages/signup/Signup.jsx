@@ -81,9 +81,9 @@ export default function Signup() {
 
   return (
     <form onSubmit={handleSubmit} className={styles["signup-form"]}>
-      <h2>sign up</h2>
+      <h2>Sign Up</h2>
       <label>
-        <span>Full name:</span>
+        <span>Full Name:</span>
         <input
           type="text"
           onChange={(e) => setDisplayName(e.target.value)}
@@ -173,7 +173,7 @@ export default function Signup() {
         <input required type="file" onChange={handleAadhaarChange} />
         {aadhaarError && <div className="error">{aadhaarError}</div>}
       </label> */}
-      {!isPending && <button className="btn">sign up</button>}
+      {!isPending && <button className={styles.btn}>Sign Up</button>}
       {isPending && (
         <button className="btn" disabled>
           loading

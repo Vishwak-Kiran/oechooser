@@ -110,7 +110,6 @@ export default function Create() {
               <label>
                 <span>Number of slots:</span>
                 <input
-                  
                   required
                   type="number"
                   onChange={(e) => setSlots(e.target.value)}
@@ -124,6 +123,7 @@ export default function Create() {
                 <input
                   type="text"
                   required
+                  className={styles.inp1}
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
@@ -132,33 +132,28 @@ export default function Create() {
               </label>
             </li>
             <li>
-          <label>
-            <span>Details:</span>
-            <textarea
-              className={styles.textarea}
-              required
-              onChange={(e) => setDetails(e.target.value)}
-              value={details}
-            ></textarea>
-          </label>
-
+              <label>
+                <span>Details:</span>
+                <textarea
+                  className={styles.textarea}
+                  required
+                  onChange={(e) => setDetails(e.target.value)}
+                  value={details}
+                ></textarea>
+              </label>
             </li>
             <li>
-
-          <label>
-            <span>Departments it belong to:</span>
-            <Select
-              onChange={(option) => setAssignedUsers(option)}
-              options={users}
-              isMulti
-              className={styles.selcet}
-            />
-          </label>
+              <label>
+                <span>Departments it belong to:</span>
+                <Select
+                  onChange={(option) => setAssignedUsers(option)}
+                  options={users}
+                  isMulti
+                  className={styles.selcet}
+                />
+              </label>
             </li>
           </ul>
-
-
-
 
           <button className="btn">Add Elective</button>
 

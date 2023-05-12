@@ -11,7 +11,7 @@
   border-radius: 10px;
   height: 640px;
   position: relative;
-  margin-top: 8%;
+  margin-top: 2%;
   margin-left: 14%;
   display: flex;
   flex-direction: column;
@@ -30,12 +30,13 @@
   .textarea{
     width: 300px;
     max-height: 150px;
+    margin-left: 160px;
   
   }
   ul {
-    margin-top: 50px;
+    margin-top: 120px;
     list-style-type: none;
-    margin-left: 15%;
+    margin-left: 19%;
 }
 li{
   margin-bottom: 15px;
@@ -50,14 +51,20 @@ hr{
 input{
   width: 300px;
   height:25px;
+  margin-left: 80px;
 }
 .selcet{
-  width:300px;
+  width:305px;
+  margin-left: 260px;
+  margin-top: -30px;
 }
-
+.inp1{
+  margin-left: 92px;
+}
 button{
   width:100px;
   height: 40px;
    font-family: "Rubik", sans-serif;
-   margin-left: 45%;
+   margin-left: 42%;
+   margin-top: 10px;
 }

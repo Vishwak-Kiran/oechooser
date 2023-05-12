@@ -4,7 +4,7 @@
   margin: 1rem;
   border-collapse: collapse;
   border: 1px solid #ddd;
-  background-color: #4caf50;
+  background-color: rgba(85, 85,88, 1);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -17,7 +17,7 @@
 
 .student-table th {
   background-color: #fff;
-  color: #4caf50;
+  color: rgba(85, 85,88, 1);
   text-transform: uppercase;
   font-weight: bold;
   border-left: 1px solid #ddd;
@@ -82,7 +82,7 @@
   font-size: 3rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: #4caf50;
+  color: rgba(85, 85,88, 1);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -91,7 +91,7 @@
   height: 4rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
-  background-color: #4caf50;
+  background-color: rgba(85, 85,88, 1);
   color: #fff;
   border: none;
   border-radius: 0.5rem;

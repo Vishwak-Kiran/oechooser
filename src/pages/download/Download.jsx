@@ -22,7 +22,7 @@ export default function Download() {
 
   return (
     <div className="download-container">
-      <h1 className="download-header">the students in {OE} </h1>
+      <h1 className="download-header">The Students in {OE} </h1>
       <button className="btn download-btn" onClick={changeFilter}>
         Show all enrolled
       </button>

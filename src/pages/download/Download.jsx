@@ -32,14 +32,21 @@ export default function Download() {
             <tr>
               <th>Email</th>
               <th>Student Name</th>
+              <th>Enrolled Time</th>
+              <th>Elective</th>
             </tr>
           </thead>
 
           {documents.map((document) => (
             <tbody>
               <tr key={document.id}>
+                {console.log(document.createdAt)}
                 <td>{document.students[1]}</td>
                 <td>{document.students[2]}</td>
+                <td>
+                  {new Date(document.createdAt.toDate()).toLocaleString()}
+                </td>
+                <td>{document.name}</td>
               </tr>
             </tbody>
           ))}

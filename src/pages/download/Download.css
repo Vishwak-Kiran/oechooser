@@ -69,13 +69,13 @@
 }
 
 .download-container {
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f8f8f8;
+  background-color: #f8f8f870;
 }
 
 .download-header {
@@ -90,12 +90,16 @@
   width: 15rem;
   height: 4rem;
   margin-bottom: 2rem;
+  margin-top: 2rem;
   background-color: #4caf50;
   color: #fff;
   border: none;
   border-radius: 0.5rem;
   font-size: 1.5rem;
   cursor: pointer;
+  transition: background-color 0.2s ease-out;
+  align-items: center;
+  justify-content: center;
 }
 
 .download-table {

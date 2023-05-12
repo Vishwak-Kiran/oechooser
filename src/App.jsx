@@ -26,7 +26,7 @@ function App() {
               {user && <Navbar />}
               <div className="container">
                 <Routes>
-                  <Route path="/" element={<Pending />}></Route>
+                  <Route path="/" element={<Login/>}></Route>
                   <Route
                     path="/login"
                     element={

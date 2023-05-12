@@ -16,7 +16,7 @@ const NavBar = () => {
   const { user } = useAuthContext();
 
   return (
-    <nav className="navbar">
+    <nav  className="navbar">
       <ul className="navbar-nav">
         <li className="logo">
           <a href="#" className="nav-link">

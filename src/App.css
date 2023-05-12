@@ -39,7 +39,7 @@ html {
 .designCard {
   aspect-ratio: 1 / 1.6;
   cursor: pointer;
-  position: relative;
+  /* position: relative; */
   width: 100vw;
   margin: 0;
   padding: 0;

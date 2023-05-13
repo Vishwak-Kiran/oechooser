@@ -28,7 +28,7 @@ function App() {
       <div className="designCard">
         <div className="designCard-content">
           {authIsReady && (
-            <HashRouter>
+            <BrowserRouter>
               {user && <Navbar />}
               <div className="container">
                 <Routes>
@@ -83,7 +83,7 @@ function App() {
                   <Route path="/electives/:id" element={<Project />}></Route>
                 </Routes>
               </div>
-            </HashRouter>
+            </BrowserRouter>
           )}
         </div>
       </div>

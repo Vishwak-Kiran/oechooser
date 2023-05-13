@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Navigate,
+  HashRouter,
+} from "react-router-dom";
 import Main from "./components/main";
 import Navbar from "./components/sidebar/navbar";
 import Pending from "../src/pages/pending/Pending.jsx";
@@ -22,7 +28,7 @@ function App() {
       <div className="designCard">
         <div className="designCard-content">
           {authIsReady && (
-            <BrowserRouter>
+            <HashRouter>
               {user && <Navbar />}
               <div className="container">
                 <Routes>
@@ -77,7 +83,7 @@ function App() {
                   <Route path="/electives/:id" element={<Project />}></Route>
                 </Routes>
               </div>
-            </BrowserRouter>
+            </HashRouter>
           )}
         </div>
       </div>

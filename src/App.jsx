@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Main from "./components/main";
 import Navbar from "./components/sidebar/navbar";
 import Pending from "../src/pages/pending/Pending.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./App.css";
 import Dashboard from "./pages/dashboard/Dashboard";
 import { useAuthContext } from "./hooks/useAuthContext";
@@ -81,6 +84,7 @@ function App() {
           )}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

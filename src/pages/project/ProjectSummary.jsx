@@ -5,6 +5,9 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useLogout } from "../../hooks/useLogout";
 import { Navigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function ProjectSummary({ project }) {
   const { deleteDocument } = useFirestore("projects");
   const { addDocument, response } = useFirestore(project.name);
@@ -19,13 +22,27 @@ export default function ProjectSummary({ project }) {
   const handleApprove = (e) => {
     e.preventDefault();
     console.log(user);
+
     addDocument({
       name: project.name,
       Maxslots: project.slots,
       students: [user.uid, user.email, user.displayName],
     });
-    navigate("/");
-    logout();
+    toast("You have successfully enrolled", {
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      position: toast.POSITION.TOP_CENTER,
+    });
+    setTimeout(function () {
+      navigate("/");
+      logout();
+      window.location.reload();
+    }, 1200);
   };
   // const handleReject = () => {
   //   navigate("/pending");

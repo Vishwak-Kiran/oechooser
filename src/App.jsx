@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Navigate,
+  HashRouter,
+} from "react-router-dom";
 import Main from "./components/main";
 import Navbar from "./components/sidebar/navbar";
 import Pending from "../src/pages/pending/Pending.jsx";
@@ -29,7 +35,7 @@ function App() {
               {user && <Navbar />}
               <div className="container">
                 <Routes>
-                  <Route path="/" element={<Pending />}></Route>
+                  <Route path="/" element={<Login/>}></Route>
                   <Route
                     path="/login"
                     element={

@@ -14,14 +14,22 @@
 
  
   .project-summary {
-    background-color: #fff;
+    background-color: #ffffff6b;
     padding: 30px;
     border-radius: 4px;
+    color: rgba(85, 85,88, 1);
   }
   .project-summary .due-date {
     margin: 10px 0;
     font-size: 0.9em;
     color: var(--title-color);
+    
+  }
+  .project-summary h3{
+    color: rgba(85, 85,88, 1);
+  }
+  .page-title{
+    color: rgba(85, 85,88, 1);
   }
   .project-summary .details {
     margin: 30px 0;
@@ -31,6 +39,7 @@
   }
   .project-summary h4 {
     color: var(--text-color);
+    color:rgba(85, 85,88, 1);
     font-size: 0.9em;
   }
   .project-summary .assigned-users {

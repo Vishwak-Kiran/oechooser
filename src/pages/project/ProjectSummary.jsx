@@ -50,8 +50,8 @@ export default function ProjectSummary({ project }) {
 
   return (
     <div>
-      <div className="project-summary">
-        <h1 className="page-title">Sum of {project.name}</h1>
+      <div style={{width:"70vh" , height:"50vh"}} className="designCard project-summary">
+        <h1 className=" page-title">Sum of {project.name}</h1>
         {/* <p>Requested By {project.}</p> */}
         <h4>Course Details : {project.details}</h4>
         <h4>Total Nuber of slots allocated : {project.slots} %</h4>
@@ -65,7 +65,7 @@ export default function ProjectSummary({ project }) {
             <div key={user.uid}>
               <ul>
                 <li>
-                  <h3 style={{ margin: "1rem" }}> {user && user.Name}</h3>
+                  <h3 style={{ margin: "1rem" , color:"#6649b8" }}> {user && user.Name}</h3>
                 </li>
               </ul>
             </div>

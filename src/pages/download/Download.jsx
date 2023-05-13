@@ -21,7 +21,7 @@ export default function Download() {
   };
 
   return (
-    <div className="download-container">
+    <div style={{zIndex:"0"}} className="designCard download-container">
       <h1 className="download-header">The Students in {OE} </h1>
       <button className="btn download-btn" onClick={changeFilter}>
         Show all enrolled

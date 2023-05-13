@@ -15,7 +15,7 @@ export default function Project() {
     return <div className="loading">Loading....</div>;
   }
   return (
-    <div className="project-details">
+    <div className=" card-content project-details">
       <ProjectSummary project={document} />
       {/* <ProjectComments project={document} /> */}
     </div>

@@ -99,7 +99,7 @@ export const useFirestore = (collection) => {
   };
 
   useEffect(() => {
-    return () => setIsCancelled(true);
+    return () => setIsCancelled(false);
   }, []);
 
   return { addDocument, deleteDocument, response, updateDocument };

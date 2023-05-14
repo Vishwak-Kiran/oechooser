@@ -82,6 +82,14 @@ export default function Signup() {
         />
       </label>
       <label>
+        <span>Password:</span>
+        <input
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+      </label>
+      <label>
         <span>Register Number:</span>
         <input
           type="text"
@@ -97,6 +105,7 @@ export default function Signup() {
         <select
           name="Department"
           id="selectList"
+          disabled={true}
           value={department}
           onChange={(e) => {
             console.log(e.target.value);
@@ -129,6 +138,7 @@ export default function Signup() {
         <select
           name="Semester"
           id="selectList"
+          disabled={true}
           value={semester}
           onChange={(e) => {
             setSemester(e.target.value);
@@ -164,14 +174,6 @@ export default function Signup() {
           type="email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
-        />
-      </label>
-      <label>
-        <span>Password:</span>
-        <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
         />
       </label>
       {/* <label>

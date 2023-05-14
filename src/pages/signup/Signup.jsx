@@ -45,7 +45,7 @@ export default function Signup() {
       } else if (temp1 == "107") {
         setDepartment("EIE");
       } else if (temp1 == "114") {
-        setDepartment("ME");
+        setDepartment("MECH");
       } else if (temp1 == "121") {
         setDepartment("BME");
       } else if (temp1 == "125") {

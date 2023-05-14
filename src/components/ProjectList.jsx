@@ -1,9 +1,8 @@
 import "./ProjectList.css";
-
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "./Avatar";
-
+import ProjectSummary from "../pages/project/ProjectSummary";
 
 export default function ProjectList({ projects }) {
   useEffect(() => {
@@ -29,7 +28,6 @@ export default function ProjectList({ projects }) {
   return (
     <div id="cards">
       {projects.length === 0 && <p>No request yet</p>}
-      
       {projects.map((project) => (
         <Link to={`/electives/${project.id}`} key={project.id}>
           <div class="card">
@@ -42,7 +40,6 @@ export default function ProjectList({ projects }) {
                   <i class="fa-duotone fa-apartment"></i>
                   <div class="card-info-title">
                     <h3>Slots {project && project.slots}</h3>
-                    <h4>Course details: {project.details}</h4>
                     <div className="assigned-to">
                       {project.assignedUsersList.map((user) => (
                         <li key={user.uid}>
@@ -53,23 +50,11 @@ export default function ProjectList({ projects }) {
                   </div>
                 </div>
               </div>
+
+              <ProjectSummary project={project} />
             </div>
           </div>
         </Link>
-        // <Link to={`/electives/${project.id}`} key={project.id}>
-        //   <h4> {project.name}</h4>
-        //   <h5>Slots {project && project.slots}</h5>
-        //   <p>Course details: {project.details}</p>
-        //   {console.log(project)}
-        //   <div className="assigned-to">
-        //     {project.assignedUsersList.map((user) => (
-        //       <li key={user.uid}>
-        //         {/* <Avatar src={user.photoURL} /> */}
-        //         <h> {user && user.Name}</h>
-        //       </li>
-        //     ))}
-        //   </div>
-        // </Link>
       ))}
     </div>
   );

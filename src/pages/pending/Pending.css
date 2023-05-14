@@ -1,33 +1,255 @@
-.pending-page{
-    margin-left: 20%;
-    max-width: 75%;
+.pending-page {
+  margin-left: 20%;
+  max-width: 75%;
 }
 .project-filter {
-    margin: 30px auto;
-  }
-  .project-filter nav {
-    display: flex;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 4px;
-  }
-  .project-filter p {
-    font-size: 0.9em;
-    margin-right: 10px;
-  }
-  .project-filter button {
-    background: transparent;
-    border: 0;
-    font-family: inherit;
-    font-weight: bold;
-    color: var(--text-color);
-    cursor: pointer;
-    border-right: 1px solid #e4e4e4;
-    font-size: 0.9em;
-  }
-  .project-filter button:last-child {
-    border: 0;
-  }
-  .project-filter button.active {
-    color: var(--primary-color);
-  } 
+  margin: 30px auto;
+}
+.project-filter nav {
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.project-filter p {
+  font-size: 0.9em;
+  margin-right: 10px;
+}
+.project-filter button {
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+  font-weight: bold;
+  color: var(--text-color);
+  cursor: pointer;
+  border-right: 1px solid #e4e4e4;
+  font-size: 0.9em;
+}
+.project-filter button:last-child {
+  border: 0;
+}
+.project-filter button.active {
+  color: var(--primary-color);
+}
+/* Pending.css */
+.pending-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.page-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.project-table th,
+.project-table td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.project-table th {
+  background-color: #f2f2f2;
+}
+
+.project-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.project-item:hover {
+  background-color: #f5f5f566;
+}
+
+.project-item .project-title {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.project-item .enroll-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.project-item .enroll-button:hover {
+  background-color: #0069d9;
+}
+.project-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.project-table th,
+.project-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.project-table th {
+  text-align: left;
+  background-color: #f2f2f2;
+}
+
+.enroll-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.enroll-button:hover {
+  background-color: #3e8e41;
+}
+
+.page-title {
+  margin-top: 0;
+}
+
+.error {
+  color: red;
+}
+.pending-page {
+  margin: 0 auto;
+  max-width: calc(100% - 18rem);
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.project-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.project-list-item:last-child {
+  border-bottom: none;
+}
+
+.project-list-item-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.project-list-item-enroll {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.project-list-item-enroll:hover {
+  background-color: #0069d9;
+}
+.pending-page {
+  background-color: #1e1f61;
+  padding: 2rem;
+
+  color: #fff;
+}
+.pending-page tr:hover {
+  color: #1e1f61;
+}
+.pending-page th {
+  color: #1e1f61;
+}
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+  padding: 1.5rem;
+  width: 30rem;
+  max-width: 100%;
+  text-align: center;
+  color: #1e1f61;
+}
+
+.project-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-card p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.enroll-btn {
+  background-color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  color: #1e1f61;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.enroll-btn:hover {
+  color: #1e1f61;
+  color: #fff;
+}

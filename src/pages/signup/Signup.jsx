@@ -13,11 +13,48 @@ export default function Signup() {
   const [section, setSection] = useState("A");
   const [registerNumber, setRegisterNumber] = useState("");
 
+
   const { signup, isPending, error } = useSignup();
   //  const [thumbnail, setThumbnail] = useState(null);
   // const [aadhaar, setAadhaar] = useState(null);
   // const [thumbnailError, setThumbnailError] = useState(null);
   // const [aadhaarError, setAadhaarError] = useState(null);
+
+  function sliceReg(e){
+    if(e.length==12){
+      const temp = e.slice(4,6)
+      if(temp == "20"){
+        setSemester("7")
+      } else if(temp == "21"){
+        setSemester("5")
+      }
+
+      const temp1 = e.slice(6,9)
+      if (temp1 == "205") {
+        setDepartment("IT");
+      } else if (temp1 == "102") {
+        setDepartment("AE");
+      } else if (temp1 == "103") {
+        setDepartment("CE");
+      } else if (temp1 == "104") {
+        setDepartment("CSE");
+      } else if (temp1 == "105") {
+        setDepartment("EEE");
+      } else if (temp1 == "106") {
+        setDepartment("ECE");
+      } else if (temp1 == "107") {
+        setDepartment("EIE");
+      } else if (temp1 == "114") {
+        setDepartment("ME");
+      } else if (temp1 == "121") {
+        setDepartment("BME");
+      } else if (temp1 == "125") {
+        setDepartment("RAE");
+      } else if (temp1 == "243") {
+        setDepartment("AIDS");
+      } 
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault(department);
@@ -33,51 +70,6 @@ export default function Signup() {
     );
     //console.log(thumbnail);
   };
-  // const handleFileChange = (e) => {
-  //   // setThumbnail(null);
-  //   let selected = e.target.files[0];
-  //   console.log(selected);
-
-  //   if (!selected) {
-  //     setThumbnailError("Please select a file");
-  //     return;
-  //   }
-  //   if (!selected.type.includes("image")) {
-  //     setThumbnailError("Selected file must be an image");
-  //     return;
-  //   }
-  //   if (selected.size > 1000000) {
-  //     setThumbnailError("Image file size must be less than 100kb");
-  //     return;
-  //   }
-
-  //  // setThumbnailError(null);
-  //   //  setThumbnail(selected);
-  //   console.log("thumbnail updated");
-  // };
-
-  // const handleAadhaarChange = (e) => {
-  //   //   setAadhaar(null);
-  //   let selected = e.target.files[0];
-  //   console.log(selected);
-
-  //   if (!selected) {
-  //     setAadhaarError("Please select a file");
-  //     return;
-  //   }
-  //   if (!selected.type.includes("image")) {
-  //     setAadhaarError("Selected file must be an image");
-  //     return;
-  //   }
-  //   if (selected.size > 1000000) {
-  //     setAadhaarError("Image file size must be less than 100kb");
-  //     return;
-  //   }
-
-  //   setAadhaarError(null);
-  //   //   setAadhaar(selected);
-  //   console.log("Aadhaar updated");
-  // };
 
   return (
     <form onSubmit={handleSubmit} className={styles["signup-form"]}>
@@ -94,7 +86,7 @@ export default function Signup() {
         <span>Register Number:</span>
         <input
           type="text"
-          onChange={(e) => setRegisterNumber(e.target.value)}
+          onChange={(e) => {setRegisterNumber(e.target.value); sliceReg(e.target.value)}}
           value={registerNumber}
         />
       </label>

@@ -114,6 +114,9 @@ export default function Signup() {
           <option value="ECE">Electronics and Communication Engineering</option>
           <option value="ECE">Electrical and Electronic Engineering</option>
           <option value="AE">Automobile Engineering</option>
+          <option value="EIE">
+            Electronics and Instrumentation Engineering
+          </option>
 
           <option value="CE">Civil Engineering</option>
           <option value="MECH">Mechanical Engineering</option>

@@ -103,6 +103,18 @@ export default function Signup() {
         >
           <option value="CSC">Computer Science</option>
           <option value="IT">Information Technology</option>
+          <option value="ECE">Electronics and Communication Engineering</option>
+          <option value="ECE">Electrical and Electronic Engineering</option>
+          <option value="AE">Automobile Engineering</option>
+          <option value="EIE">
+            Electronics and Instrumentation Engineering
+          </option>
+          <option value="BME">Biomedical Engineering</option>
+          <option value="RIE"> Robotics and Automation Engineering</option>
+
+          <option value="CE">Civil Engineering</option>
+          <option value="MECH">Mechanical Engineering</option>
+          <option value="AIDS">Artificial Intelligence and Data Science</option>
         </select>
         {/* <input
           type="text"

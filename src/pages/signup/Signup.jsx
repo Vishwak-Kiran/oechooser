@@ -13,23 +13,22 @@ export default function Signup() {
   const [section, setSection] = useState("A");
   const [registerNumber, setRegisterNumber] = useState("");
 
-
   const { signup, isPending, error } = useSignup();
   //  const [thumbnail, setThumbnail] = useState(null);
   // const [aadhaar, setAadhaar] = useState(null);
   // const [thumbnailError, setThumbnailError] = useState(null);
   // const [aadhaarError, setAadhaarError] = useState(null);
 
-  function sliceReg(e){
-    if(e.length==12){
-      const temp = e.slice(4,6)
-      if(temp == "20"){
-        setSemester("7")
-      } else if(temp == "21"){
-        setSemester("5")
+  function sliceReg(e) {
+    if (e.length == 12) {
+      const temp = e.slice(4, 6);
+      if (temp == "20") {
+        setSemester("7");
+      } else if (temp == "21") {
+        setSemester("5");
       }
 
-      const temp1 = e.slice(6,9)
+      const temp1 = e.slice(6, 9);
       if (temp1 == "205") {
         setDepartment("IT");
       } else if (temp1 == "102") {
@@ -52,7 +51,7 @@ export default function Signup() {
         setDepartment("RAE");
       } else if (temp1 == "243") {
         setDepartment("AIDS");
-      } 
+      }
     }
   }
 
@@ -86,7 +85,10 @@ export default function Signup() {
         <span>Register Number:</span>
         <input
           type="text"
-          onChange={(e) => {setRegisterNumber(e.target.value); sliceReg(e.target.value)}}
+          onChange={(e) => {
+            setRegisterNumber(e.target.value);
+            sliceReg(e.target.value);
+          }}
           value={registerNumber}
         />
       </label>
@@ -104,7 +106,7 @@ export default function Signup() {
           <option value="CSC">Computer Science</option>
           <option value="IT">Information Technology</option>
           <option value="ECE">Electronics and Communication Engineering</option>
-          <option value="ECE">Electrical and Electronic Engineering</option>
+          <option value="EEE">Electrical and Electronic Engineering</option>
           <option value="AE">Automobile Engineering</option>
           <option value="EIE">
             Electronics and Instrumentation Engineering

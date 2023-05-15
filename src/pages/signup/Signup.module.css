@@ -23,6 +23,10 @@
   color: #777;
   width: 104%;
 }
+.btn1{
+  width: 250px !important;
+  margin-bottom: 17px !important;margin-top: 17px !important;
+}
 .btn {
   margin-left: 140px;
 }

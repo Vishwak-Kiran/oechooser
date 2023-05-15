@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../../hooks/useSignup";
+import { useHistory } from "react-router-dom";
 
 import styles from "./Signup.module.css";
 
@@ -18,7 +19,12 @@ export default function Signup() {
   // const [aadhaar, setAadhaar] = useState(null);
   // const [thumbnailError, setThumbnailError] = useState(null);
   // const [aadhaarError, setAadhaarError] = useState(null);
+  const history = useHistory();
 
+  function handleClick() {
+    history.push("/login");
+    window.location.reload(true)
+  }
   function sliceReg(e) {
     if (e.length == 12) {
       const temp = e.slice(4, 6);
@@ -188,6 +194,9 @@ export default function Signup() {
         </button>
       )}
       {error && <p>{error}</p>}
+
+      <button className={styles.btn1} onClick={handleClick}>Already an User? Signup Instead</button>
+
     </form>
   );
 }

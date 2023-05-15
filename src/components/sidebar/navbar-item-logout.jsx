@@ -1,20 +1,22 @@
 import React from "react";
-
-import { useLogout } from "../../hooks/useLogout";
-import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useLogout } from "../../hooks/useLogout";
 
 const NavBarItemLogout = ({ link, svg, name, click }) => {
-
-    const { logout, isPending } = useLogout();
+  const { logout, isPending } = useLogout();
   const { user } = useAuthContext();
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <li className="nav-item" onClick={click}>
-      <a href={link} className="nav-link">
+      <Link to={link} className="nav-link" onClick={handleLogout}>
         {svg}
         <span className="link-text">{name}</span>
-      </a>
+      </Link>
     </li>
   );
 };

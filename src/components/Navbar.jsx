@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
 
 // styles
 import styles from "./Navbar.module.css";
-import { Navigate } from "react-router-dom";
 
 export default function Navbar() {
   const { logout, isPending } = useLogout();
@@ -14,16 +13,18 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <ul>
         <li className={styles.title}>
-          <Link to="/">LoanLender</Link>
+          <NavLink exact to="/">
+            LoanLender
+          </NavLink>
         </li>
 
         {!user && (
           <>
             <li>
-              <Link to="/login">Login</Link>
+              <NavLink to="/login">Login</NavLink>
             </li>
             <li>
-              <Link to="/signup">Signup</Link>
+              <NavLink to="/signup">Signup</NavLink>
             </li>
           </>
         )}
@@ -32,11 +33,7 @@ export default function Navbar() {
           <>
             <li>
               {!isPending && (
-                <button
-                  className="btn"
-                  onClick={logout}
-                  element={<Navigate to="/" replace />}
-                >
+                <button className="btn" onClick={logout}>
                   Logout
                 </button>
               )}
@@ -45,6 +42,7 @@ export default function Navbar() {
                   Logging out
                 </button>
               )}
+              <Redirect to="/" />
             </li>
           </>
         )}

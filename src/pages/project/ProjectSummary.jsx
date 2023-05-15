@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useLogout } from "../../hooks/useLogout";
@@ -10,8 +10,7 @@ export default function ProjectSummary({ project }) {
   const { addDocument } = useFirestore(project.name);
   const { logout } = useLogout();
   const { user } = useAuthContext();
-  let navigate = useNavigate();
-  const [student, setStudent] = useState({});
+  let history = useHistory();  const [student, setStudent] = useState({});
   const handleApprove = (e) => {
     e.preventDefault();
 
@@ -31,8 +30,7 @@ export default function ProjectSummary({ project }) {
       position: toast.POSITION.TOP_CENTER,
     });
     setTimeout(function () {
-      navigate("/");
-      logout();
+      history.push("/");      logout();
       window.location.reload();
     }, 1200);
   };

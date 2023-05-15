@@ -7,7 +7,6 @@ import Alien from "./icons/alien.jsx";
 import Space from "./icons/space.jsx";
 import Shuttle from "./icons/shuttle.jsx";
 import { useLogout } from "../../hooks/useLogout";
-import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import Print from "./icons/print";
 

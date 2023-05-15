@@ -1,10 +1,9 @@
 import React from "react";
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Route,
-  Routes,
-  Navigate,
-  HashRouter,
+  Switch,
+  Redirect,
 } from "react-router-dom";
 import Main from "./components/main";
 import Navbar from "./components/sidebar/navbar";
@@ -23,6 +22,7 @@ import Create from "./pages/create/Create";
 import Particles from "./components/ParticlesBackground";
 import ParticlesBackground from "./components/ParticlesBackground";
 import Download from "./pages/download/Download";
+
 function App() {
   const { authIsReady, user } = useAuthContext();
 
@@ -31,62 +31,62 @@ function App() {
       <div className="designCard">
         <div className="designCard-content">
           {authIsReady && (
-            <BrowserRouter>
+            <Router>
               {user && <Navbar />}
               <div className="container">
-                <Routes>
-                  <Route path="/" element={<Pending />}></Route>
+                <Switch>
+                  <Route exact path="/" component={Pending} />
                   <Route
                     path="/login"
-                    element={
-                      !user ? <Login /> : <Navigate to="/pending"></Navigate>
+                    render={() =>
+                      !user ? <Login /> : <Redirect to="/pending" />
                     }
-                  ></Route>
+                  />
                   <Route
                     path="/signup"
-                    element={
-                      !user ? <Signup /> : <Navigate to="/pending"></Navigate>
+                    render={() =>
+                      !user ? <Signup /> : <Redirect to="/pending" />
                     }
-                  ></Route>
+                  />
                   <Route
                     path="/particles"
-                    element={!user && <Particles />}
-                  ></Route>
-
+                    render={() => !user && <Particles />}
+                  />
                   <Route
                     path="/request"
-                    element={
+                    render={() =>
                       user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? (
                         <Create />
                       ) : (
-                        <Login />
+                        <Redirect to="/login" />
                       )
                     }
-                  ></Route>
-
+                  />
                   <Route
                     path="/pending"
-                    element={user ? <Pending /> : <Login />}
-                  ></Route>
+                    render={() =>
+                      user ? <Pending /> : <Redirect to="/login" />
+                    }
+                  />
                   {/* <Route
                     path="/dashboard"
-                    element={user ? <Dashboard /> : <Login />}
-                  ></Route> */}
+                    render={() => (user ? <Dashboard /> : <Redirect to="/login" />)}
+                  /> */}
                   <Route
                     path="/download"
-                    element={
+                    render={() =>
                       user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? (
                         <Download />
                       ) : (
-                        <Login />
+                        <Redirect to="/login" />
                       )
                     }
-                  ></Route>
-                  {/* <Route path="/success" element={<Success />}></Route> */}
-                  <Route path="/electives/:id" element={<Project />}></Route>
-                </Routes>
+                  />
+                  {/* <Route path="/success" component={<Success />} /> */}
+                  <Route path="/electives/:id" component={<Project />} />
+                </Switch>
               </div>
-            </BrowserRouter>
+            </Router>
           )}
         </div>
       </div>

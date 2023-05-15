@@ -7,7 +7,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 
 import { timestamp } from "../../firebaseDatabase/config";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const categories = [
   { value: "development", label: "Development" },
@@ -17,8 +17,7 @@ const categories = [
 ];
 
 export default function Create() {
-  let navigate = useNavigate();
-
+  let history = useHistory();
   const { documents } = useCollection("departments");
   const [users, setUsers] = useState([]);
   const [slots, setSlots] = useState("");
@@ -84,7 +83,7 @@ export default function Create() {
 
     await addDocument(project);
     if (!response.error) {
-      navigate("/");
+      history.push("/");
     }
   };
 

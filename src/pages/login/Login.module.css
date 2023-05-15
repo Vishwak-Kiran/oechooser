@@ -43,6 +43,10 @@ p {
   margin-left: 135px;
   margin: 0 !important;
 }
+.btn1{
+  width: 203px !important;
+  margin-bottom: 17px !important;margin-top: 17px !important;
+}
 .login-form {
   display: flex;
   flex-direction: column;

@@ -35,7 +35,11 @@ function App() {
               {user && <Navbar />}
               <div className="container">
                 <Switch>
-                  <Route exact path="/" component={Pending} />
+                  <Route
+                    exact
+                    path="/"
+                    render={() => (!user ? <Login /> : <Redirect to="/" />)}
+                  />
                   <Route
                     path="/login"
                     render={() =>

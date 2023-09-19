@@ -81,9 +81,7 @@ export default function ProjectSummary({ project }) {
           });
 
           setTimeout(function () {
-            history.push("/");
             logout();
-            window.location.reload();
           }, 1200);
         } catch (error) {
           console.error("Error enrolling:", error);

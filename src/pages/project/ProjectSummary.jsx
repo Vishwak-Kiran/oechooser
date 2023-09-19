@@ -65,9 +65,8 @@ export default function ProjectSummary({ project }) {
             }
           });
 
-          // Update the UI with the new project slots
-          // You can use a callback function or another method to achieve this
-          // Example: updateProject({ ...project, slots: project.slots - 1 });
+          const userRef = firestore.collection("users").doc(user.uid);
+          await userRef.update({ isEnroll: true });
 
           toast("You have successfully enrolled", {
             autoClose: 5000,

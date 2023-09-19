@@ -13,6 +13,7 @@ export default function Signup() {
   const [semester, setSemester] = useState("5");
   const [section, setSection] = useState("A");
   const [registerNumber, setRegisterNumber] = useState("");
+  const [isEnroll,setIsEnroll] = useState(false)
 
   const { signup, isPending, error } = useSignup();
   const history = useHistory();
@@ -67,7 +68,8 @@ export default function Signup() {
       department,
       year,
       section,
-      semester
+      semester,
+      isEnroll
     );
     //console.log(thumbnail);
   };

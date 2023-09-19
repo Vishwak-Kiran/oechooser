@@ -16,7 +16,8 @@ export const useSignup = () => {
     department,
     year,
     section,
-    semester
+    semester,
+    isEnroll
   ) => {
     setError(null);
     setIsPending(true);
@@ -45,7 +46,7 @@ export const useSignup = () => {
         email: email,
         registerNumber: registerNumber,
         department: department,
-
+        isEnroll: isEnroll,
         section: section,
         semester: semester,
         year: year,

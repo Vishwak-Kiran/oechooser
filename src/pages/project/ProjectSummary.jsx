@@ -11,28 +11,35 @@ export default function ProjectSummary({ project }) {
   const { logout } = useLogout();
   const { user } = useAuthContext();
   let history = useHistory();  const [student, setStudent] = useState({});
-  const handleApprove = (e) => {
-    e.preventDefault();
+  const handleApprove = () => {
+    const shouldEnroll = window.confirm("Are you sure you want to enroll?");
 
-    addDocument({
-      name: project.name,
-      Maxslots: project.slots,
-      students: [user.uid, user.email, user.displayName],
-    });
-    toast("You have successfully enrolled", {
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      position: toast.POSITION.TOP_CENTER,
-    });
-    setTimeout(function () {
-      history.push("/");      logout();
-      window.location.reload();
-    }, 1200);
+    if (shouldEnroll) {
+      // User confirmed enrollment
+      addDocument({
+        name: project.name,
+        Maxslots: project.slots,
+        students: [user.uid, user.email, user.displayName],
+      });
+      toast("You have successfully enrolled", {
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        position: toast.POSITION.TOP_CENTER,
+      });
+      setTimeout(function () {
+        history.push("/");
+        logout();
+        window.location.reload();
+      }, 1200);
+    } else {
+      // User clicked "Cancel" in the confirmation dialog
+      console.log("Enrollment canceled.");
+    }
   };
 
   return (

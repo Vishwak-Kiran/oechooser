@@ -9,15 +9,18 @@ export const useSignup = () => {
   const { dispatch } = useAuthContext();
 
   const signup = async (
-    email,
-    password,
-    displayName,
-    registerNumber,
-    department,
-    year,
-    section,
-    semester,
-    isEnroll
+    {
+      email,
+      password,
+      displayName,
+      registerNumber,
+      department,
+      year,
+      section,
+      semester,
+      isEnroll,
+    },
+    handleDownloadPassword
   ) => {
     setError(null);
     setIsPending(true);
@@ -29,6 +32,7 @@ export const useSignup = () => {
         throw new Error("Could not complete signup");
       }
       console.log(department, year, section);
+      handleDownloadPassword();
 
       //const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`;
       // console.log(uploadPath);

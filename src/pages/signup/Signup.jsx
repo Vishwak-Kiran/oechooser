@@ -62,18 +62,20 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault(department);
     signup(
-      email,
-      password,
-      displayName,
-      registerNumber,
-      department,
-      year,
-      section,
-      semester,
-      isEnroll
+      {
+        email,
+        password,
+        displayName,
+        registerNumber,
+        department,
+        year,
+        section,
+        semester,
+        isEnroll,
+      },
+      handleDownloadPassword
     );
     //console.log(thumbnail);
-    handleDownloadPassword();
   };
 
   const handleDownloadPassword = () => {

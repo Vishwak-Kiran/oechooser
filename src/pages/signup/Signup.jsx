@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useSignup } from "../../hooks/useSignup";
 import { useHistory } from "react-router-dom";
-
+import saveAs from "file-saver";
+import ExcelJS from "exceljs";
 import styles from "./Signup.module.css";
 
 export default function Signup() {
@@ -13,14 +14,14 @@ export default function Signup() {
   const [semester, setSemester] = useState("5");
   const [section, setSection] = useState("A");
   const [registerNumber, setRegisterNumber] = useState("");
-  const [isEnroll,setIsEnroll] = useState(false)
+  const [isEnroll, setIsEnroll] = useState(false);
 
   const { signup, isPending, error } = useSignup();
   const history = useHistory();
 
   function handleClick() {
     history.push("/login");
-    window.location.reload(true)
+    window.location.reload(true);
   }
   function sliceReg(e) {
     if (e.length == 12) {
@@ -72,6 +73,19 @@ export default function Signup() {
       isEnroll
     );
     //console.log(thumbnail);
+    handleDownloadPassword();
+  };
+
+  const handleDownloadPassword = () => {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("Password");
+
+    worksheet.addRow(["Password:", password]); // Add password to the worksheet
+
+    workbook.xlsx.writeBuffer().then((buffer) => {
+      const blob = new Blob([buffer], { type: "application/octet-stream" });
+      saveAs(blob, "password.xlsx"); // Trigger download
+    });
   };
 
   return (
@@ -192,9 +206,9 @@ export default function Signup() {
         </button>
       )}
       {error && <p>{error}</p>}
-
-      <button className={styles.btn1} onClick={handleClick}>Already an User? Signup Instead</button>
-
+      <button className={styles.btn1} onClick={handleClick}>
+        Already an User? Signup Instead
+      </button>
     </form>
   );
 }

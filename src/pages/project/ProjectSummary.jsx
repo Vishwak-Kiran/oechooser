@@ -28,6 +28,7 @@ export default function ProjectSummary({ project }) {
             Maxslots: project.slots - 1, // Reduce the max slot count
             students: [user.uid, user.email, user.displayName],
             projectId: project.id,
+            
           });
 
           // Update the project's slots in the "electives" collection
@@ -81,7 +82,7 @@ export default function ProjectSummary({ project }) {
 
           setTimeout(function () {
             logout();
-          }, 1200);
+          }, 950);
         } catch (error) {
           console.error("Error enrolling:", error);
           toast.error("An error occurred while enrolling. Please try again.", {

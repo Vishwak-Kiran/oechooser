@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -10,7 +10,8 @@ import Navbar from "./components/sidebar/navbar";
 import Pending from "../src/pages/pending/Pending.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import firebase from "firebase/app";
+import "firebase/firestore";
 import "./App.css";
 import Dashboard from "./pages/dashboard/Dashboard";
 import { useAuthContext } from "./hooks/useAuthContext";
@@ -22,9 +23,41 @@ import Create from "./pages/create/Create";
 import Particles from "./components/ParticlesBackground";
 import ParticlesBackground from "./components/ParticlesBackground";
 import Download from "./pages/download/Download";
+import { useLogout } from "./hooks/useLogout";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
+  const [isEnroll, setIsEnroll] = useState(null); // State to store isEnroll value
+  const { logout, isPending } = useLogout();
+
+  useEffect(() => {
+    if (authIsReady && user) {
+      // Check if the user is logged in and has a UID
+      const firestore = firebase.firestore();
+      const userRef = firestore.collection("users").doc(user.uid);
+
+      userRef
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            // User document exists, fetch isEnroll value
+            const userData = doc.data();
+            setIsEnroll(userData.isEnroll);
+            if (isEnroll) {
+              window.alert("You have already enrolled");
+              logout();
+            }
+          } else {
+            // User document does not exist
+            setIsEnroll(false); // Assuming default isEnroll value is false
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching user data:", error);
+          setIsEnroll(false); // Handle error by assuming default isEnroll value is false
+        });
+    }
+  }, [authIsReady, user, isEnroll, logout]);
 
   return (
     <div className="App">
@@ -33,6 +66,7 @@ function App() {
           {authIsReady && (
             <Router>
               {user && <Navbar />}
+
               <div className="container">
                 <Switch>
                   <Route

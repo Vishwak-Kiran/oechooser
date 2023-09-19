@@ -32,9 +32,7 @@ export default function ProjectSummary({ project }) {
         position: toast.POSITION.TOP_CENTER,
       });
       setTimeout(function () {
-        history.push("/");
         logout();
-        window.location.reload();
       }, 1200);
     } else {
       // User clicked "Cancel" in the confirmation dialog

@@ -15,10 +15,6 @@ export default function Signup() {
   const [registerNumber, setRegisterNumber] = useState("");
 
   const { signup, isPending, error } = useSignup();
-  //  const [thumbnail, setThumbnail] = useState(null);
-  // const [aadhaar, setAadhaar] = useState(null);
-  // const [thumbnailError, setThumbnailError] = useState(null);
-  // const [aadhaarError, setAadhaarError] = useState(null);
   const history = useHistory();
 
   function handleClick() {

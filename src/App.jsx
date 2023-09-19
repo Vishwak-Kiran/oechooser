@@ -38,51 +38,41 @@ function App() {
                   <Route
                     exact
                     path="/"
-                    render={() => (!user ? <Login /> : <Redirect to="/" />)}
+                    component={() => (user ? <Pending /> : <Login />)}
                   />
                   <Route
                     path="/login"
-                    render={() =>
-                      !user ? <Login /> : <Redirect to="/pending" />
-                    }
+                    component={() => (!user ? <Login /> : <Pending />)}
                   />
                   <Route
                     path="/signup"
-                    render={() =>
-                      !user ? <Signup /> : <Redirect to="/pending" />
-                    }
+                    component={() => (!user ? <Signup /> : <Pending />)}
                   />
                   <Route
                     path="/particles"
-                    render={() => !user && <Particles />}
+                    component={() => !user && <Particles />}
                   />
                   <Route
                     path="/request"
-                    render={() =>
+                    component={() =>
                       user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? (
                         <Create />
                       ) : (
-                        <Redirect to="/login" />
+                        <Login />
                       )
                     }
                   />
                   <Route
                     path="/pending"
-                    render={() =>
-                      user ? <Pending /> : <Redirect to="/login" />
-                    }
+                    component={() => (user ? <Pending /> : <Login />)}
                   />
-                  {/* <Route
-                    path="/dashboard"
-                    render={() => (user ? <Dashboard /> : <Redirect to="/login" />)}
-                  /> */}
                   <Route
                     path="/download"
-                    render={() =>
+                    component={() =>
                       user && user.uid === "mHgVONortQYvsoncQuk6rMRIxIY2" ? (
                         <Download />
                       ) : (
-                        <Redirect to="/login" />
+                        <Login />
                       )
                     }
                   />

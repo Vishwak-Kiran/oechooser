@@ -27,7 +27,7 @@ import { useLogout } from "./hooks/useLogout";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
-  const [isEnroll, setIsEnroll] = useState(null); // State to store isEnroll value
+  const [isEnroll, setIsEnroll] = useState(null); // State to store isEnroll valu
   const { logout, isPending } = useLogout();
 
   useEffect(() => {

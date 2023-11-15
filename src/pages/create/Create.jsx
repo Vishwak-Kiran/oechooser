@@ -132,7 +132,7 @@ export default function Create() {
             </li>
             <li>
               <label>
-                <span>Details:</span>
+                <span>Subject:</span>
                 <textarea
                   className={styles.textarea}
                   required

@@ -165,9 +165,9 @@ export default function Signup() {
           }}
         >
           <option value="4">4th semester</option>
-          <option value="5">5th semester</option>
+          {/* <option value="5">5th semester</option> */}
           <option value="6">6th semester</option>
-          <option value="7">7th semester</option>
+          {/* <option value="7">7th semester</option> */}
         </select>
       </label>
       <label>

@@ -132,7 +132,7 @@ export default function Signup() {
             setDepartment(e.target.value);
           }}
         >
-          <option value="CSC">Computer Science</option>
+          <option value="CSE">Computer Science</option>
           <option value="IT">Information Technology</option>
           <option value="ECE">Electronics and Communication Engineering</option>
           <option value="EEE">Electrical and Electronic Engineering</option>

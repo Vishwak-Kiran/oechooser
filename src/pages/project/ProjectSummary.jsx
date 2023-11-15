@@ -5,15 +5,21 @@ import { useFirestore } from "../../hooks/useFirestore";
 import { useLogout } from "../../hooks/useLogout";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import styles from "./ProjectSummary.module.css"; // Import the CSS module
 
 export default function ProjectSummary({ project }) {
   const { addDocument } = useFirestore(project.name);
   const { logout } = useLogout();
   const { user } = useAuthContext();
   let history = useHistory();
+  const [isEnrolled, setIsEnrolled] = useState(false);
   const [isConfirming, setIsConfirming] = useState(false);
 
   const handleApprove = async () => {
+    if (isEnrolled || isConfirming) {
+      return; // Disable button if already enrolled or confirming
+    }
+
     setIsConfirming(true);
 
     const shouldEnroll = window.confirm("Are you sure you want to enroll?");
@@ -21,8 +27,10 @@ export default function ProjectSummary({ project }) {
     setIsConfirming(false);
 
     if (shouldEnroll) {
-      if (project.slots > 0) {
-        try {
+      setIsEnrolled(true); // Set isEnrolled to true immediately
+
+      try {
+        if (project.slots > 0) {
           await addDocument({
             name: project.name,
             Maxslots: project.slots - 1,
@@ -50,37 +58,34 @@ export default function ProjectSummary({ project }) {
             }
           });
 
-          // Update the user's document to include the enrolled elective
           const userRef = firestore.collection("users").doc(user.uid);
           await userRef.update({
             isEnroll: true,
             elective: project.name,
           });
 
-          alert("You have successfully enrolled");
+          // alert("You have successfully enrolled");
           logout(); // Log out the user immediately upon successful enrollment confirmation
-        } catch (error) {
-          console.error("Error enrolling:", error);
-          alert("An error occurred while enrolling. Please try again.");
+        } else {
+          alert("No available slots for enrollment.");
         }
-      } else {
-        alert("No available slots for enrollment.");
+      } catch (error) {
+        console.error("Error enrolling:", error);
+        alert("An error occurred while enrolling. Please try again.");
       }
-    } else {
-      console.log("Enrollment canceled.");
     }
   };
 
   return (
     <div>
-      <button className="btn" onClick={handleApprove} disabled={isConfirming}>
+      <button className="btn" onClick={handleApprove} disabled={isEnrolled}>
         Enroll
       </button>
 
-      {isConfirming && (
-        <div className="overlay">
+      {isEnrolled && (
+        <div className={styles.overlay}>
           <div className="confirmation-box">
-            <p>Confirming...</p>
+            <p>You have successfully enrolled</p>
           </div>
         </div>
       )}

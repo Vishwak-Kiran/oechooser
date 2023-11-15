@@ -33,8 +33,7 @@ export default function ProjectSummary({ project }) {
           // Update the project's slots in the "electives" collection
           const firestore = firebase.firestore();
           const electiveRef = firestore.collection("electives").doc(project.id);
-          console.log(project);
-          // Replace "project.projectId" with the actual ID of the elective document
+
           await firestore.runTransaction(async (transaction) => {
             const electiveDoc = await transaction.get(electiveRef);
             if (!electiveDoc.exists) {
@@ -48,6 +47,7 @@ export default function ProjectSummary({ project }) {
             if (updatedSlots >= 0) {
               transaction.update(electiveRef, { slots: updatedSlots });
             } else {
+              // Notify the user about no available slots
               toast.error(
                 "No available slots for enrollment in this elective.",
                 {
@@ -61,13 +61,19 @@ export default function ProjectSummary({ project }) {
                   position: toast.POSITION.TOP_CENTER,
                 }
               );
+
               return; // Don't proceed with enrollment
             }
           });
 
+          // Update the user's document to include the enrolled elective
           const userRef = firestore.collection("users").doc(user.uid);
-          await userRef.update({ isEnroll: true });
+          await userRef.update({
+            isEnroll: true,
+            elective: project.name,
+          });
 
+          // Notify the user about successful enrollment
           toast("You have successfully enrolled", {
             autoClose: 5000,
             hideProgressBar: false,
@@ -79,11 +85,14 @@ export default function ProjectSummary({ project }) {
             position: toast.POSITION.TOP_CENTER,
           });
 
+          // Logout after enrollment (you may want to adjust this logic)
           setTimeout(function () {
             logout();
           }, 950);
         } catch (error) {
           console.error("Error enrolling:", error);
+
+          // Notify the user about the error
           toast.error("An error occurred while enrolling. Please try again.", {
             autoClose: 5000,
             hideProgressBar: false,
@@ -95,8 +104,8 @@ export default function ProjectSummary({ project }) {
             position: toast.POSITION.TOP_CENTER,
           });
         }
-        
       } else {
+        // Notify the user about no available slots
         toast.error("No available slots for enrollment.", {
           autoClose: 5000,
           hideProgressBar: false,

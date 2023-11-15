@@ -1,42 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Pending.css";
 import { useCollection } from "../../hooks/useCollection";
-import ProjectList from "../../components/ProjectList";
-//import ProjectFilter from "../dashboard/ProjectFilter";
-import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
 import ProjectSummary from "../project/ProjectSummary";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Pending() {
   const { user } = useAuthContext();
-  const { documents, error } = useCollection("electives");
+  const { documents: electiveDocuments, error: electiveError } =
+    useCollection("electives");
+  const { document: userDocument, error: userError } = useDocument(
+    "users",
+    user.uid
+  );
   const [filter, setFilter] = useState("all");
 
-  // const { error: projectError, document } = useDocument(
-  //   "electives",
-  //   "project_id_here"
-  // );
+  useEffect(() => {
+    // Fetch the user document when the component mounts or when the user changes
+    // You can use your own logic or hook for fetching documents
+    // This is just a placeholder, replace it with your actual hook or logic
+    const fetchUserDocument = async () => {
+      // Fetch the user document from the "users" collection
+      const { document, error } = await yourUserDocumentFetchingFunction(
+        user.uid
+      );
 
-  const changeFilter = (newFilter) => {
-    setFilter(newFilter);
+      // Handle errors if needed
+      if (error) {
+        console.error("Error fetching user document:", error);
+        return;
+      }
+
+      // Do something with the user document
+      // For example, update the state with the user's department
+      setFilter(document?.department || "all");
+    };
+
+    fetchUserDocument();
+  }, [user]); // useEffect dependency on the user to re-fetch when user changes
+
+  const yourUserDocumentFetchingFunction = async (uid) => {
+    // Replace this with your actual logic or useDocument hook
+    // to fetch the user document based on the UID
+    const response = await fetch(`your-api-endpoint/users/${uid}`);
+    const data = await response.json();
+    return { document: data, error: null }; // Adjust based on your response structure
   };
 
-  const projects = documents
-    ? documents.filter((document) => {
+  const projects = electiveDocuments
+    ? electiveDocuments.filter((document) => {
+        console.log(
+          document.assignedUsersList.some(
+            (assignedUser) =>
+              assignedUser?.uid.toLowerCase() ===
+              userDocument?.department.toLowerCase()
+          )
+        );
         switch (filter) {
           case "all request":
             return true;
-          case "IT":
-            let assignedToMe = false;
-            document.assignedUsersList.forEach((u) => {
-              if (u.uid === "csc") {
-                console.log(u);
-                assignedToMe = true;
-              }
-            });
-            return assignedToMe;
           default:
-            return true;
+            // Check if the user's department is not present in any assigned user's department
+            return !document.assignedUsersList.some(
+              (assignedUser) =>
+                assignedUser?.uid.toLowerCase() ==
+                userDocument?.department.toLowerCase()
+            );
         }
       })
     : null;
@@ -44,8 +73,8 @@ export default function Pending() {
   return (
     <div className="pending-page">
       <h2 className="page-title">Electives </h2>
-      {error && <p className="error">{error}</p>}
-      {/* {documents && <ProjectFilter changeFilter={changeFilter} />} */}
+      {electiveError && <p className="error">{electiveError}</p>}
+      {userError && <p className="error">{userError}</p>}
       <table className="project-table">
         <thead>
           <tr>
@@ -60,7 +89,7 @@ export default function Pending() {
             projects.map((project) => (
               <tr key={project.id}>
                 <td>{project.name}</td>
-                <td>{project.instructorName}</td>
+                <td>{project.details}</td>
                 <td>{project.slots}</td>
                 <td>
                   <ProjectSummary project={project} />
@@ -69,7 +98,6 @@ export default function Pending() {
             ))}
         </tbody>
       </table>
-      {/* {document && <ProjectSummary project={document} />} */}
     </div>
   );
 }

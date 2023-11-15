@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { saveAs } from "file-saver";
@@ -7,19 +7,13 @@ import "./Download.css"; // Import your CSS file
 
 export default function Download() {
   const { user } = useAuthContext();
-  const [selectedCollection, setSelectedCollection] = useState(
-    "Web Design and Management"
-  );
+  const [selectedCollection, setSelectedCollection] = useState("IT");
+  const { documents, error } = useCollection("users");
 
-  // Define the available collection options
-  const collectionOptions = [
-    "Pudhu Computing",
-    "Web Design and Management",
-    "Cloud Computing",
-    "Machine Learning",
-  ];
-
-  const { documents, error } = useCollection(selectedCollection);
+  // Filter documents based on the selected department, if documents are available
+  const filteredDocuments = documents
+    ? documents.filter((document) => document.department === selectedCollection)
+    : [];
 
   const downloadAsExcel = async () => {
     try {
@@ -30,18 +24,44 @@ export default function Download() {
       // Define the columns in the worksheet
       worksheet.columns = [
         { header: "Email", key: "email" },
-        { header: "Student Name", key: "studentName" },
+        { header: "Register Number", key: "registerNumber" },
+        { header: "Student Name", key: "displayName" },
+        { header: "Department", key: "department" },
+        { header: "Year", key: "year" },
+        { header: "Section", key: "section" },
         { header: "Enrolled Time", key: "enrolledTime" },
+
+        { header: "Semester", key: "semester" },
+
         { header: "Elective", key: "elective" },
       ];
 
       // Populate the worksheet with data
-      documents.forEach((document) => {
+      filteredDocuments.forEach((document) => {
+        const email = document.email ? document.email : "N/A";
+        const displayName = document.displayName ? document.displayName : "N/A";
+        const department = document.department ? document.department : "N/A";
+        const registerNumber = document.registerNumber
+          ? document.registerNumber
+          : "N/A";
+        const section = document.section ? document.section : "N/A";
+        const semester = document.semester ? document.semester : "N/A";
+        const year = document.year ? document.year : "N/A";
+
+        const enrolledTime = "N/A"; // You might need to adjust this depending on how you want to handle enrolledTime
+        const elective = document.elective ? document.elective : "N/A";
+
         worksheet.addRow({
-          email: document.students[1],
-          studentName: document.students[2],
-          enrolledTime: new Date(document.createdAt.toDate()).toLocaleString(),
-          elective: document.name,
+          email,
+          displayName,
+          enrolledTime,
+          department,
+          registerNumber,
+          section,
+          semester,
+          year,
+
+          elective,
         });
       });
 
@@ -65,7 +85,7 @@ export default function Download() {
           value={selectedCollection}
           onChange={(e) => setSelectedCollection(e.target.value)}
         >
-          {collectionOptions.map((option) => (
+          {["IT", "EEE", "ECE", "CSC", "MECH"].map((option) => (
             <option key={option} value={option}>
               {option}
             </option>

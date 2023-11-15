@@ -50,8 +50,12 @@ export default function ProjectSummary({ project }) {
             }
           });
 
+          // Update the user's document to include the enrolled elective
           const userRef = firestore.collection("users").doc(user.uid);
-          await userRef.update({ isEnroll: true });
+          await userRef.update({
+            isEnroll: true,
+            elective: project.name,
+          });
 
           alert("You have successfully enrolled");
           logout(); // Log out the user immediately upon successful enrollment confirmation

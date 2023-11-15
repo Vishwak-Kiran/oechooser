@@ -23,17 +23,16 @@ export default function Download() {
 
       // Define the columns in the worksheet
       worksheet.columns = [
-        { header: "Email", key: "email" },
-        { header: "Register Number", key: "registerNumber" },
+        { header: "Elective", key: "elective" },
         { header: "Student Name", key: "displayName" },
+        { header: "Register Number", key: "registerNumber" },
+        { header: "Email", key: "email" },
         { header: "Department", key: "department" },
         { header: "Year", key: "year" },
         { header: "Section", key: "section" },
         { header: "Enrolled Time", key: "enrolledTime" },
-
         { header: "Semester", key: "semester" },
 
-        { header: "Elective", key: "elective" },
       ];
 
       // Populate the worksheet with data

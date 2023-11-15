@@ -62,6 +62,7 @@ export default function ProjectSummary({ project }) {
           await userRef.update({
             isEnroll: true,
             elective: project.name,
+            subjectCode: project.details 
           });
 
           // alert("You have successfully enrolled");

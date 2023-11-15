@@ -26,10 +26,10 @@ export default function Signup() {
   function sliceReg(e) {
     if (e.length == 12) {
       const temp = e.slice(4, 6);
-      if (temp == "20") {
-        setSemester("7");
-      } else if (temp == "21") {
-        setSemester("5");
+      if (temp == "21") {
+        setSemester("6");
+      } else if (temp == "22") {
+        setSemester("4");
       }
 
       const temp1 = e.slice(6, 9);
@@ -164,10 +164,10 @@ export default function Signup() {
             setSemester(e.target.value);
           }}
         >
+          <option value="4">4th semester</option>
           <option value="5">5th semester</option>
           <option value="6">6th semester</option>
           <option value="7">7th semester</option>
-          <option value="8">8th semester</option>
         </select>
       </label>
       <label>
@@ -180,7 +180,9 @@ export default function Signup() {
             setSection(e.target.value);
           }}
         >
-          <option value="A">A</option> <option value="B">B</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
         </select>
       </label>
       {/* <label>

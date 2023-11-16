@@ -17,14 +17,29 @@ export default function Login() {
     setPassword("");
   };
 
-  const handleResetPassword = async () => {
+const handleResetPassword = async () => {
+  if (email) {
     try {
-      await firebase.auth().sendPasswordResetEmail(email);
-      console.log("Password reset email sent.");
+      // Display a confirmation dialog
+      const isConfirmed = window.confirm(
+        `Are you sure you want to reset the password for ${email}?`
+      );
+
+      if (isConfirmed) {
+        // If confirmed, send the password reset email
+        await firebase.auth().sendPasswordResetEmail(email);
+        console.log("Password reset email sent.");
+      } else {
+        console.log("Password reset canceled.");
+      }
     } catch (error) {
       console.error("Error sending password reset email:", error);
     }
-  };
+  } else {
+    console.error("Please enter a valid email address.");
+  }
+};
+
 
   const handleSignupClick = () => {
     // Programmatically navigate to the signup page

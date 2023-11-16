@@ -7,13 +7,18 @@ import "./Download.css"; // Import your CSS file
 
 export default function Download() {
   const { user } = useAuthContext();
-  const [selectedCollection, setSelectedCollection] = useState("IT");
   const { documents, error } = useCollection("users");
+  const [filteredDocuments, setFilteredDocuments] = useState([]);
 
-  // Filter documents based on the selected department, if documents are available
-  const filteredDocuments = documents
-    ? documents.filter((document) => document.department === selectedCollection)
-    : [];
+  // Update filteredDocuments when documents change
+  useEffect(() => {
+    // Remove the document with email "admin@admin.com"
+    setFilteredDocuments(
+      documents
+        ? documents.filter((doc) => doc.email !== "admin@admin.com")
+        : []
+    );
+  }, [documents]);
 
   const downloadAsExcel = async () => {
     try {
@@ -23,22 +28,18 @@ export default function Download() {
 
       // Define the columns in the worksheet
       worksheet.columns = [
-        { header: "Subject Code", key: "subjectCode" },
-        { header: "Elective", key: "elective" },
+        { header: "S.No", key: "sno" },
         { header: "Register Number", key: "registerNumber" },
         { header: "Student Name", key: "displayName" },
         { header: "Department", key: "department" },
         { header: "Year", key: "year" },
         { header: "Semester", key: "semester" },
         { header: "Section", key: "section" },
-        { header: "Enrolled Time", key: "enrolledTime" },
-        { header: "Email", key: "email" },
       ];
 
-      // Populate the worksheet with data
-      filteredDocuments.forEach((document) => {
+      // Populate the worksheet with data and add serial number
+      filteredDocuments.forEach((document, index) => {
         const email = document.email ? document.email : "N/A";
-        const subjectCode = document.subjectCode ? document.subjectCode : "N/A";
         const displayName = document.displayName ? document.displayName : "N/A";
         const department = document.department ? document.department : "N/A";
         const registerNumber = document.registerNumber
@@ -48,21 +49,15 @@ export default function Download() {
         const semester = document.semester ? document.semester : "N/A";
         const year = document.year ? document.year : "N/A";
 
-        const enrolledTime = "N/A"; // You might need to adjust this depending on how you want to handle enrolledTime
-        const elective = document.elective ? document.elective : "N/A";
-
         worksheet.addRow({
+          sno: index + 1, // Serial number starts from 1
           email,
           displayName,
-          enrolledTime,
           department,
           registerNumber,
           section,
           semester,
           year,
-          subjectCode,
-
-          elective,
         });
       });
 
@@ -78,21 +73,7 @@ export default function Download() {
 
   return (
     <div className="download-container">
-      <h1 className="download-header">Students Enrolled</h1>
-      <div className="select-container">
-        <label htmlFor="collectionSelect">Select Collection:</label>
-        <select
-          id="collectionSelect"
-          value={selectedCollection}
-          onChange={(e) => setSelectedCollection(e.target.value)}
-        >
-          {["IT", "EEE", "ECE", "CSC", "MECH"].map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </div>
+      <h1 className="download-header">Download Registered Students</h1>
       <button className="btn download-btn" onClick={downloadAsExcel}>
         Download as Excel
       </button>

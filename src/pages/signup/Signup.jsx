@@ -28,8 +28,10 @@ export default function Signup() {
       const temp = e.slice(4, 6);
       if (temp == "21") {
         setSemester("6");
+        setYear("3");
       } else if (temp == "22") {
         setSemester("4");
+        setYear("2");
       }
 
       const temp1 = e.slice(6, 9);
@@ -102,7 +104,7 @@ export default function Signup() {
         />
       </label>
       <label>
-        <span>Password:</span>
+        <span>Create Password:</span>
         <input
           type="password"
           onChange={(e) => setPassword(e.target.value)}
@@ -211,7 +213,7 @@ export default function Signup() {
       )}
       {error && <p>{error}</p>}
       <button className={styles.btn1} onClick={handleClick}>
-        Already an User? Signup Instead
+        Already an User? Login Instead
       </button>
     </form>
   );

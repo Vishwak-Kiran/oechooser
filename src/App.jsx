@@ -32,7 +32,6 @@ function App() {
 
   useEffect(() => {
     if (authIsReady && user) {
-      // Check if the user is logged in and has a UID
       const firestore = firebase.firestore();
       const userRef = firestore.collection("users").doc(user.uid);
 
@@ -72,7 +71,7 @@ function App() {
                   <Route
                     exact
                     path="/"
-                    component={() => (user ? <Pending /> : <Login />)}
+                    component={() => (user ? <Pending /> : <Signup />)}
                   />
                   <Route
                     path="/login"

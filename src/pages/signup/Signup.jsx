@@ -1,12 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSignup } from "../../hooks/useSignup";
 import { useHistory } from "react-router-dom";
 import saveAs from "file-saver";
 import ExcelJS from "exceljs";
 import styles from "./Signup.module.css";
+import { useCollection } from "../../hooks/useCollection";
+import { useDocument } from "../../hooks/useDocument";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Signup() {
+  const [isRegistrationAllowed, setRegistrationAllowed] = useState(false);
+  const { documents, error: electiveError } = useCollection("settings");
+  useEffect(() => {
+    // Fetch the registration status from Firestore
+    const fetchRegistrationStatus = async () => {
+      try {
+        console.log("try loop is visited");
+
+        console.log(documents);
+        // Assuming you have the ID of the document you want to find
+        const targetDocumentId = "J6fiB89VZ6qN1O3QrQu9";
+
+        // Find the document by ID
+
+        const targetDocument = documents.find(
+          (doc) => doc.id === targetDocumentId
+        );
+        if (targetDocument) {
+          const registrationAllowed = targetDocument.regAllow;
+          // Perform any further actions based on the document data
+          console.log("registrationAllowed", registrationAllowed);
+          setRegistrationAllowed(registrationAllowed);
+          console.log("isRegistrationAllowed", isRegistrationAllowed);
+        } else {
+          console.error(`Document with ID ${targetDocumentId} not found.`);
+        }
+      } catch (error) {
+        console.error("Error fetching registration status:", error);
+      }
+    };
+
+    fetchRegistrationStatus();
+  }, [documents]);
+
+  console.log(isRegistrationAllowed);
+
   const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [department, setDepartment] = useState("CSC");
@@ -92,7 +132,7 @@ export default function Signup() {
     });
   };
 
-  return (
+  return isRegistrationAllowed ? (
     <form onSubmit={handleSubmit} className={styles["signup-form"]}>
       <h2>Sign Up</h2>
       <label>
@@ -216,5 +256,9 @@ export default function Signup() {
         Already an User? Login Instead
       </button>
     </form>
+  ) : (
+    <div className={styles["signup-form"]}>
+      <h2>Registration will open soon</h2>
+    </div>
   );
 }

@@ -22,6 +22,7 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
 .overlay {
   position: fixed;
   top: 0;

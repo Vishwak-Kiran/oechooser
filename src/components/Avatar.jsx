@@ -6,7 +6,7 @@ export default function Avatar(src) {
   return (
     <div className={styles.avatar}>
       <img src={src.src} alt="avatar img" />
-      {console.log(src)}
+      {/* {console.log(src)} */}
     </div>
   );
 }

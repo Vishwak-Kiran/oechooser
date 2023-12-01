@@ -15,9 +15,9 @@ export default function Signup() {
     // Fetch the registration status from Firestore
     const fetchRegistrationStatus = async () => {
       try {
-        console.log("try loop is visited");
+        //console.log("try loop is visited");
 
-        console.log(documents);
+        //console.log(documents);
         // Assuming you have the ID of the document you want to find
         const targetDocumentId = "J6fiB89VZ6qN1O3QrQu9";
 
@@ -29,9 +29,9 @@ export default function Signup() {
         if (targetDocument) {
           const registrationAllowed = targetDocument.regAllow;
           // Perform any further actions based on the document data
-          console.log("registrationAllowed", registrationAllowed);
+          //console.log("registrationAllowed", registrationAllowed);
           setRegistrationAllowed(registrationAllowed);
-          console.log("isRegistrationAllowed", isRegistrationAllowed);
+          //console.log("isRegistrationAllowed", isRegistrationAllowed);
         } else {
           console.error(`Document with ID ${targetDocumentId} not found.`);
         }
@@ -43,7 +43,7 @@ export default function Signup() {
     fetchRegistrationStatus();
   }, [documents]);
 
-  console.log(isRegistrationAllowed);
+ //console.log(isRegistrationAllowed);
 
   const [email, setEmail] = useState("");
 
@@ -170,7 +170,7 @@ export default function Signup() {
           disabled={true}
           value={department}
           onChange={(e) => {
-            console.log(e.target.value);
+           // console.log(e.target.value);
             setDepartment(e.target.value);
           }}
         >

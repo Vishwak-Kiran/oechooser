@@ -29,7 +29,7 @@ export default function Pending() {
         const targetDocument = settingDoc.find(
           (doc) => doc.id === targetDocumentId
           );
-          console.log(targetDocument);
+         // console.log(targetDocument);
         if (targetDocument) {
           const chooseAllowed = targetDocument.chooseAllow;
           // Perform any further actions based on the document data
@@ -76,16 +76,16 @@ export default function Pending() {
     const data = await response.json();
     return { document: data, error: null }; // Adjust based on your response structure
   };
-  console.log(isChooseAllowed)
+  // console.log(isChooseAllowed)
   const projects = electiveDocuments
     ? electiveDocuments.filter((document) => {
-        console.log(
-          document.assignedUsersList.some(
-            (assignedUser) =>
-              assignedUser?.uid.toLowerCase() ===
-              userDocument?.department.toLowerCase()
-          )
-        );
+        // console.log(
+        //   document.assignedUsersList.some(
+        //     (assignedUser) =>
+        //       assignedUser?.uid.toLowerCase() ===
+        //       userDocument?.department.toLowerCase()
+        //   )
+        // );
         switch (filter) {
           case "all request":
             return true;

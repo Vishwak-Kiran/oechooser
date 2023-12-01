@@ -26,9 +26,9 @@ export default function Login() {
 
     const fetchRegistrationStatus = async () => {
       try {
-        console.log("try loop is visited");
+        // console.log("try loop is visited");
 
-        console.log(documents); // Assuming you have the ID of the document you want to find
+        // console.log(documents); // Assuming you have the ID of the document you want to find
 
         const targetDocumentId = "J6fiB89VZ6qN1O3QrQu9"; // Find the document by ID
 
@@ -39,11 +39,11 @@ export default function Login() {
         if (targetDocument) {
           const registrationAllowed = targetDocument.regAllow; // Perform any further actions based on the document data
 
-          console.log("registrationAllowed", registrationAllowed);
+          // console.log("registrationAllowed", registrationAllowed);
 
           setRegistrationAllowed(registrationAllowed);
 
-          console.log("isRegistrationAllowed", isRegistrationAllowed);
+          // console.log("isRegistrationAllowed", isRegistrationAllowed);
         } else {
           console.error(`Document with ID ${targetDocumentId} not found.`);
         }
@@ -55,7 +55,7 @@ export default function Login() {
     fetchRegistrationStatus();
   }, [documents]);
 
-  console.log(isRegistrationAllowed);
+  // console.log(isRegistrationAllowed);
 
   const [email, setEmail] = useState("");
 
@@ -87,9 +87,9 @@ export default function Login() {
 
           await firebase.auth().sendPasswordResetEmail(email);
 
-          console.log("Password reset email sent.");
+          // console.log("Password reset email sent.");
         } else {
-          console.log("Password reset canceled.");
+          // console.log("Password reset canceled.");
         }
       } catch (error) {
         console.error("Error sending password reset email:", error);

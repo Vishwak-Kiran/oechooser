@@ -24,7 +24,7 @@ export const useCollection = (collection, _query, _order) => {
       (snapshot) => {
         let results = [];
         snapshot.docs.forEach((doc) => {
-          console.log(doc);
+          // console.log(doc);
           results.push({ ...doc.data(), id: doc.id });
         });
 
@@ -32,7 +32,7 @@ export const useCollection = (collection, _query, _order) => {
         setError(null);
       },
       (error) => {
-        console.log(error);
+        // console.log(error);
         setError("could not fetch the data");
       }
     );

@@ -31,7 +31,7 @@ export const useSignup = () => {
       if (!res) {
         throw new Error("Could not complete signup");
       }
-      console.log(department, year, section);
+      // console.log(department, year, section);
       handleDownloadPassword();
 
       //const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`;

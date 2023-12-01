@@ -35,6 +35,7 @@ export default function Download() {
         { header: "Year", key: "year" },
         { header: "Semester", key: "semester" },
         { header: "Section", key: "section" },
+        { header: "Elective", key: "elective" },
       ];
 
       // Populate the worksheet with data and add serial number
@@ -48,6 +49,7 @@ export default function Download() {
         const section = document.section ? document.section : "N/A";
         const semester = document.semester ? document.semester : "N/A";
         const year = document.year ? document.year : "N/A";
+        const elective = document.elective ? document.elective : "N/A";
 
         worksheet.addRow({
           sno: index + 1, // Serial number starts from 1
@@ -58,6 +60,7 @@ export default function Download() {
           section,
           semester,
           year,
+          elective
         });
       });
 

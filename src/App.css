@@ -21,7 +21,7 @@ body {
   place-items: center;
   overflow-y: scroll;
   overflow-x: hidden;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 5%, #202177c5 8%);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 5%, #204177c5 8%);
   background-position: 0% 0%;
   background-size: 2vmin 2vmin;
 }
@@ -45,7 +45,6 @@ body {
   border-radius: 8px;
   text-align: center;
 }
-
 
 .overlay-cover {
   position: fixed;
@@ -72,13 +71,14 @@ html {
 }
 
 .designCard {
-  aspect-ratio: 1 / 1.6;
+  /* aspect-ratio: 1 / 1.6; */
   cursor: pointer;
   /* position: relative; */
   width: 100vw;
   margin: 0;
   padding: 0;
   z-index: 0;
+  max-width: 100%;
 }
 
 /* .designCard:hover:before {
@@ -125,9 +125,8 @@ html {
 } */
 
 .designCard-content {
-  
   height: calc(100%);
-  padding: 5vmin;
+  /* padding: 5vmin; */
   position: relative;
   transition: background-position 350ms ease;
   width: calc(100%);
@@ -145,7 +144,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: #3a3a61;
   border-radius: 0.4rem;
 }
 
@@ -193,6 +192,7 @@ body::-webkit-scrollbar-thumb {
 .link-text {
   display: none;
   margin-left: 1rem;
+  padding-left: 20px;
 }
 
 .nav-link svg {
@@ -245,9 +245,10 @@ body::-webkit-scrollbar-thumb {
 /* SMALL SCREENS */
 @media only screen and (max-width: 600px) {
   .navbar {
+    position: fixed;
+    z-index: 1000;
     bottom: 0;
-    width: 100vw;
-    height: 6rem;
+    width: 100%;
   }
 
   .logo {
@@ -265,6 +266,9 @@ body::-webkit-scrollbar-thumb {
   main {
     padding: 2rem;
     margin: 0;
+  }
+  .designCard{
+    max-width: 100%;
   }
 }
 

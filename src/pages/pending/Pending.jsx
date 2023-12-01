@@ -100,7 +100,7 @@ export default function Pending() {
       })
     : null;
 
-  return isChooseAllowed ? (
+  return userDocument?.department == "IT" && isChooseAllowed ?  (
     <div className="pending-page">
       <h2 className="page-title">Electives </h2>
       {electiveError && <p className="error">{electiveError}</p>}
@@ -118,7 +118,7 @@ export default function Pending() {
           {projects &&
             projects.map((project) => (
               <tr key={project.id}>
-                <td>{project.name}</td>
+                <td className="td1">{project.name}</td>
                 <td>{project.details}</td>
                 <td>{project.slots}</td>
                 <td>

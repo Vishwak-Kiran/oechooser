@@ -154,11 +154,11 @@ export default function Login() {
         </button>
       )}
            {" "}
-      {!forgotPassword && (
+      {/* {!forgotPassword && (
         <button className={styles.btn1} onClick={handleClick}>
                     Forgot Password?        {" "}
         </button>
-      )}
+      )} */}
            {" "}
       <button className={styles.btn1} onClick={handleSignupClick}>
                 New User? Signup Instead      {" "}

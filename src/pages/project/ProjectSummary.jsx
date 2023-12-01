@@ -15,67 +15,70 @@ export default function ProjectSummary({ project }) {
   const [isEnrolled, setIsEnrolled] = useState(false);
   const [isConfirming, setIsConfirming] = useState(false);
 
-  const handleApprove = async () => {
-    if (isEnrolled || isConfirming) {
-      return; // Disable button if already enrolled or confirming
-    }
+ const handleApprove = async () => {
+   if (isEnrolled || isConfirming) {
+     return; // Disable button if already enrolled or confirming
+   }
 
-    setIsConfirming(true);
+   setIsConfirming(true);
 
-    const shouldEnroll = window.confirm("Are you sure you want to enroll?");
+   const shouldEnroll = window.confirm("Are you sure you want to enroll?");
 
-    setIsConfirming(false);
+   setIsConfirming(false);
 
-    if (shouldEnroll) {
-      setIsEnrolled(true); // Set isEnrolled to true immediately
+   if (shouldEnroll) {
+     try {
+       if (project.slots > 0) {
+         setIsEnrolled(true); // Set isEnrolled to true immediately
 
-      try {
-        if (project.slots > 0) {
-          await addDocument({
-            name: project.name,
-            Maxslots: project.slots - 1,
-            students: [user.uid, user.email, user.displayName],
-            projectId: project.id,
-          });
+         await addDocument({
+           name: project.name,
+           Maxslots: project.slots - 1,
+           students: [user.uid, user.email, user.displayName],
+           projectId: project.id,
+         });
 
-          const firestore = firebase.firestore();
-          const electiveRef = firestore.collection("electives").doc(project.id);
+         const firestore = firebase.firestore();
+         const electiveRef = firestore.collection("electives").doc(project.id);
 
-          await firestore.runTransaction(async (transaction) => {
-            const electiveDoc = await transaction.get(electiveRef);
-            if (!electiveDoc.exists) {
-              throw new Error("Elective document does not exist!");
-            }
+         await firestore.runTransaction(async (transaction) => {
+           const electiveDoc = await transaction.get(electiveRef);
+           if (!electiveDoc.exists) {
+             throw new Error("Elective document does not exist!");
+           }
 
-            const electiveData = electiveDoc.data();
-            const updatedSlots = electiveData.slots - 1;
+           const electiveData = electiveDoc.data();
+           const updatedSlots = electiveData.slots - 1;
 
-            if (updatedSlots >= 0) {
-              transaction.update(electiveRef, { slots: updatedSlots });
-            } else {
-              alert("No available slots for enrollment in this elective.");
-              return;
-            }
-          });
+           if (updatedSlots >= 0) {
+             transaction.update(electiveRef, { slots: updatedSlots });
+           } else {
+             alert("No available slots for enrollment in this elective.");
+             setIsEnrolled(false); // Reset isEnrolled if enrollment fails
+             return;
+           }
+         });
 
-          const userRef = firestore.collection("users").doc(user.uid);
-          await userRef.update({
-            isEnroll: true,
-            elective: project.name,
-            subjectCode: project.details 
-          });
+         const userRef = firestore.collection("users").doc(user.uid);
+         await userRef.update({
+           isEnroll: true,
+           elective: project.name,
+           subjectCode: project.details,
+         });
 
-          // alert("You have successfully enrolled");
-          logout(); // Log out the user immediately upon successful enrollment confirmation
-        } else {
-          alert("No available slots for enrollment.");
-        }
-      } catch (error) {
-        console.error("Error enrolling:", error);
-        alert("An error occurred while enrolling. Please try again.");
-      }
-    }
-  };
+         // alert("You have successfully enrolled");
+         logout(); // Log out the user immediately upon successful enrollment confirmation
+       } else {
+         alert("No available slots for enrollment.");
+         setIsEnrolled(false); // Reset isEnrolled if there are no available slots
+       }
+     } catch (error) {
+       console.error("Error enrolling:", error);
+       alert("An error occurred while enrolling. Please try again.");
+       setIsEnrolled(false); // Reset isEnrolled if enrollment fails
+     }
+   }
+ };
 
   return (
     <div>

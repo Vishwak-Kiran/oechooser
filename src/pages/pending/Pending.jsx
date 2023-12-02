@@ -101,7 +101,7 @@ export default function Pending() {
       })
     : null;
 
-  return userDocument?.department == "IT" && false ?  (
+  return userDocument?.department == "IT" && true ?  (
     <div className="pending-page">
       <h2 className="page-title">Electives </h2>
       {electiveError && <p className="error">{electiveError}</p>}

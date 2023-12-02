@@ -132,7 +132,7 @@ export default function Pending() {
     </div>
   ) : (
     <div className="signup-form">
-      <h2>Chooser will open soon</h2>
+      <h2>Chooser will open at 7PM</h2>
     </div>
   );
 }

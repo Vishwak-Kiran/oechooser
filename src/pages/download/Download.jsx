@@ -36,6 +36,7 @@ export default function Download() {
         { header: "Semester", key: "semester" },
         { header: "Section", key: "section" },
         { header: "Elective", key: "elective" },
+        { header: "Email", key: "email" },
       ];
 
       // Populate the worksheet with data and add serial number

@@ -17,43 +17,43 @@ import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Login() {
-  const [isRegistrationAllowed, setRegistrationAllowed] = useState(false);
+  // const [isRegistrationAllowed, setRegistrationAllowed] = useState(false);
 
-  const { documents, error: electiveError } = useCollection("settings");
+  // const { documents, error: electiveError } = useCollection("settings");
 
-  useEffect(() => {
-    // Fetch the registration status from Firestore
+  // useEffect(() => {
+  //   // Fetch the registration status from Firestore
 
-    const fetchRegistrationStatus = async () => {
-      try {
-        // console.log("try loop is visited");
+  //   const fetchRegistrationStatus = async () => {
+  //     try {
+  //       // console.log("try loop is visited");
 
-        // console.log(documents); // Assuming you have the ID of the document you want to find
+  //       // console.log(documents); // Assuming you have the ID of the document you want to find
 
-        const targetDocumentId = "J6fiB89VZ6qN1O3QrQu9"; // Find the document by ID
+  //       const targetDocumentId = "J6fiB89VZ6qN1O3QrQu9"; // Find the document by ID
 
-        const targetDocument = documents.find(
-          (doc) => doc.id === targetDocumentId
-        );
+  //       const targetDocument = documents.find(
+  //         (doc) => doc.id === targetDocumentId
+  //       );
 
-        if (targetDocument) {
-          const registrationAllowed = targetDocument.regAllow; // Perform any further actions based on the document data
+  //       if (targetDocument) {
+  //         const registrationAllowed = targetDocument.regAllow; // Perform any further actions based on the document data
 
-          // console.log("registrationAllowed", registrationAllowed);
+  //         // console.log("registrationAllowed", registrationAllowed);
 
-          setRegistrationAllowed(registrationAllowed);
+  //         setRegistrationAllowed(registrationAllowed);
 
-          // console.log("isRegistrationAllowed", isRegistrationAllowed);
-        } else {
-          console.error(`Document with ID ${targetDocumentId} not found.`);
-        }
-      } catch (error) {
-        console.error("Error fetching registration status:", error);
-      }
-    };
+  //         // console.log("isRegistrationAllowed", isRegistrationAllowed);
+  //       } else {
+  //         console.error(`Document with ID ${targetDocumentId} not found.`);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching registration status:", error);
+  //     }
+  //   };
 
-    fetchRegistrationStatus();
-  }, [documents]);
+  //   fetchRegistrationStatus();
+  // }, [documents]);
 
   // console.log(isRegistrationAllowed);
 
@@ -117,7 +117,7 @@ export default function Login() {
     }
   };
 
-  return isRegistrationAllowed ? (
+  return true ? (
     <form onSubmit={handleSubmit} className={styles["login-form"]}>
             <h2>{forgotPassword ? "Forgot Password" : "Login"}</h2>     {" "}
       <label>

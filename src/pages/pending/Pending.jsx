@@ -13,37 +13,38 @@ export default function Pending() {
     "users",
     user.uid
   );
+  console.log(user.uid)
   const [filter, setFilter] = useState("all");
-  const [isChooseAllowed, setIsChooseAllowed] = useState(false);
-  const { documents : settingDoc, error: settingError } = useCollection("settings");
-  useEffect(() => {
-    // Fetch the registration status from Firestore
-    const fetchRegistrationStatus = async () => {
-      try {
-        // Assuming you have the ID of the document you want to find
-        const targetDocumentId = "UVj7ky9i0QKLrumUWOl2";
+  // const [isChooseAllowed, setIsChooseAllowed] = useState(false);
+  // const { documents : settingDoc, error: settingError } = useCollection("settings");
+  // useEffect(() => {
+  //   // Fetch the registration status from Firestore
+  //   const fetchRegistrationStatus = async () => {
+  //     try {
+  //       // Assuming you have the ID of the document you want to find
+  //       const targetDocumentId = "UVj7ky9i0QKLrumUWOl2";
         
         
-        // Find the document by ID
+  //       // Find the document by ID
         
-        const targetDocument = settingDoc.find(
-          (doc) => doc.id === targetDocumentId
-          );
-         // console.log(targetDocument);
-        if (targetDocument) {
-          const chooseAllowed = targetDocument.chooseAllow;
-          // Perform any further actions based on the document data
-          setIsChooseAllowed(chooseAllowed);
-        } else {
-          console.error(`Document with ID ${targetDocumentId} not found.`);
-        }
-      } catch (error) {
-        console.error("Error fetching registration status:", error);
-      }
-    };
+  //       const targetDocument = settingDoc.find(
+  //         (doc) => doc.id === targetDocumentId
+  //         );
+  //        // console.log(targetDocument);
+  //       if (targetDocument) {
+  //         const chooseAllowed = targetDocument.chooseAllow;
+  //         // Perform any further actions based on the document data
+  //         setIsChooseAllowed(chooseAllowed);
+  //       } else {
+  //         console.error(`Document with ID ${targetDocumentId} not found.`);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching registration status:", error);
+  //     }
+  //   };
 
-    fetchRegistrationStatus();
-  }, [settingDoc]);
+  //   fetchRegistrationStatus();
+  // }, [settingDoc]);
 
   useEffect(() => {
     // Fetch the user document when the component mounts or when the user changes
@@ -100,7 +101,7 @@ export default function Pending() {
       })
     : null;
 
-  return userDocument?.department == "IT" && isChooseAllowed ?  (
+  return userDocument?.department == "IT" && false ?  (
     <div className="pending-page">
       <h2 className="page-title">Electives </h2>
       {electiveError && <p className="error">{electiveError}</p>}

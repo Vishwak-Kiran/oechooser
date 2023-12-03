@@ -258,7 +258,7 @@ export default function Signup() {
     </form>
   ) : (
     <div className={styles["signup-form"]}>
-      <h2>Registration will open soon</h2>
+      <h2>Registration is closed</h2>
     </div>
   );
 }

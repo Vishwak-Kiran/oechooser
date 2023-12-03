@@ -167,10 +167,10 @@ export default function Login() {
     </form>
   ) : (
     <div className={styles["login-form"]}>
-            <h2>Login is closed for now</h2>     {" "}
-      <button className={styles.btn1} onClick={handleSignupClick}>
+            <h2>Login is closed</h2>     {" "}
+      {/* <button className={styles.btn1} onClick={handleSignupClick}>
                 New User? Signup Instead      {" "}
-      </button>
+      </button> */}
          {" "}
     </div>
   );

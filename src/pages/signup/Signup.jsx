@@ -132,7 +132,7 @@ export default function Signup() {
     });
   };
 
-  return true ? (
+  return false ? (
     <form onSubmit={handleSubmit} className={styles["signup-form"]}>
       <h2>Sign Up</h2>
       <label>
